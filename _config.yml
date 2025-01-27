@@ -9,7 +9,7 @@ baseurl: ""  # for local development
 # url: "http://localhost:4000"  # for local development
 
 # Production settings (uncomment and update these when deploying)
-baseurl: "/medical-ai-portfolio"  # your repository name
+# baseurl: "/medical-ai-portfolio"  # your repository name
 url: "https://narimannr2x.github.io"
 
 # Build settings
