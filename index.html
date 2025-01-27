@@ -1,0 +1,155 @@
+---
+layout: default
+title: Home
+---
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="profile-image">
+            <div class="profile-placeholder">
+                <i class="fas fa-user-doctor"></i>
+            </div>
+        </div>
+        <h1 class="hero-title animate-on-scroll">Bridging Medicine & Technology</h1>
+        <p class="hero-subtitle animate-on-scroll">Physician-Developer specializing in AI, Computer Vision, and LLMs for healthcare innovation</p>
+        <div class="hero-badges animate-on-scroll">
+            <span class="badge"><i class="fas fa-brain"></i> AI Research</span>
+            <span class="badge"><i class="fas fa-eye"></i> Computer Vision</span>
+            <span class="badge"><i class="fas fa-robot"></i> LLMs</span>
+        </div>
+    </div>
+    <div class="hero-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </div>
+</section>
+
+<section id="projects" class="section scroll-reveal">
+    <div class="section-container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <article class="project-card">
+                <div class="project-content">
+                    <div class="project-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="project-title">Persian Medical Dataset for LLMs</h3>
+                    <p>Contributed to building the largest Persian textual medical dataset for training language models, enhancing healthcare AI accessibility in Persian-speaking regions.</p>
+                    <div class="project-tags">
+                        <span class="tag">NLP</span>
+                        <span class="tag">Healthcare Data</span>
+                        <span class="tag">LLMs</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-content">
+                    <div class="project-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3 class="project-title">3D MRI Fistula Detection</h3>
+                    <p>Developing a cutting-edge computer vision model for detecting perianal fistulas using 3D MRI technology, improving diagnostic accuracy and treatment planning.</p>
+                    <div class="project-tags">
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Medical Imaging</span>
+                        <span class="tag">AI</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-content">
+                    <div class="project-icon">
+                        <i class="fas fa-book-medical"></i>
+                    </div>
+                    <h3 class="project-title">Medical Guideline Analyzer</h3>
+                    <p>Created a RAG-based system that analyzes multiple medical guidelines, highlighting similarities and differences to assist healthcare providers in decision-making.</p>
+                    <div class="project-tags">
+                        <span class="tag">RAG</span>
+                        <span class="tag">Clinical Guidelines</span>
+                        <span class="tag">NLP</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-content">
+                    <div class="project-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="project-title">Medical AI Agents</h3>
+                    <p>Currently working on developing AI agents for medical applications, focusing on improving healthcare delivery and patient outcomes.</p>
+                    <div class="project-tags">
+                        <span class="tag">AI Agents</span>
+                        <span class="tag">Healthcare</span>
+                        <span class="tag">Innovation</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="blog" class="section scroll-reveal">
+    <div class="section-container">
+        <h2 class="section-title">Latest Insights</h2>
+        <div class="blog-grid">
+            {% for post in site.posts limit:3 %}
+            <article class="blog-card">
+                <div class="project-content">
+                    <h3 class="project-title">{{ post.title }}</h3>
+                    <div class="post-meta">
+                        <time datetime="{{ post.date | date_to_xmlschema }}">
+                            {{ post.date | date: "%B %d, %Y" }}
+                        </time>
+                        {% if post.categories %}
+                        <div class="post-categories">
+                            {% for category in post.categories %}
+                            <span class="tag">{{ category }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+                    <a href="{{ post.url | relative_url }}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="journey" class="section scroll-reveal">
+    <div class="section-container">
+        <h2 class="section-title">My Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Medical Practice & Technology Integration</h3>
+                <p>Started exploring the intersection of healthcare and technology while practicing medicine, identifying opportunities for innovation.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>AI & Computer Vision Development</h3>
+                <p>Specialized in developing AI solutions for healthcare challenges, focusing on medical imaging and natural language processing.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Current Focus</h3>
+                <p>Working on advanced AI applications in healthcare, combining medical expertise with cutting-edge technology to improve patient care.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section scroll-reveal">
+    <div class="section-container">
+        <h2 class="section-title">Let's Connect</h2>
+        <div class="contact-content" style="text-align: center;">
+            <p>Interested in collaborating on healthcare AI projects or discussing medical technology? Let's connect!</p>
+            <div class="social-links" style="margin-top: 2rem;">
+                <a href="https://linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://twitter.com/your-handle" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="mailto:{{ site.email }}"><i class="fas fa-envelope"></i> Email</a>
+            </div>
+        </div>
+    </div>
+</section>
