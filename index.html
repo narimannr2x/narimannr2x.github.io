@@ -3,87 +3,95 @@ layout: default
 title: Home
 ---
 
-<section class="hero">
-    <div class="hero-content">
-        <div class="profile-image">
-            <div class="profile-placeholder">
-                <i class="fas fa-user-doctor"></i>
-            </div>
-        </div>
-        <h1 class="hero-title animate-on-scroll">Bridging Medicine & Technology</h1>
-        <p class="hero-subtitle animate-on-scroll">Physician-Developer specializing in AI, Computer Vision, and LLMs for healthcare innovation</p>
-        <div class="hero-badges animate-on-scroll">
-            <span class="badge"><i class="fas fa-brain"></i> AI Research</span>
-            <span class="badge"><i class="fas fa-eye"></i> Computer Vision</span>
-            <span class="badge"><i class="fas fa-robot"></i> LLMs</span>
-        </div>
+<section class="bg-gradient-to-b from-yellow-50 to-accent py-24 text-center relative overflow-hidden">
+    <!-- Floating Circles -->
+    <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute left-[20%] top-[10%] w-[600px] h-[600px] bg-primary rounded-full opacity-10 animate-float-slow"></div>
+        <div class="absolute right-[10%] top-[30%] w-[500px] h-[500px] bg-primary rounded-full opacity-10 animate-float-medium delay-[5s]"></div>
+        <div class="absolute left-[35%] bottom-[5%] w-[550px] h-[550px] bg-primary rounded-full opacity-10 animate-float-fast delay-[2s]"></div>
     </div>
-    <div class="hero-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+        <div class="mx-auto mb-12 w-80 h-80 rounded-full overflow-hidden relative bg-gradient-to-r from-primary to-orange-500 p-1.5 animate-rotate-gradient">
+            <img src="website_pic-min.JPG" alt="Profile" class="w-full h-full object-cover rounded-full hover:scale-105 transition duration-300">
+        </div>
+        <div class="flex justify-center overflow-hidden">
+            <h1 class="text-5xl font-extrabold leading-tight mb-5 bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent whitespace-nowrap border-r-4 border-primary animate-typing animate-cursor w-[600px]">Bridging Medicine & Technology</h1>
+        </div>
+        <p class="text-xl text-gray-700 mb-6">Physician-Developer specializing in AI, Computer Vision, and LLMs for healthcare innovation</p>
+        <div class="flex justify-center gap-4 flex-wrap">
+            <span class="bg-white/90 py-2 px-5 rounded-full font-medium shadow-md flex items-center gap-2 hover:-translate-y-1 transition duration-300">
+               <i class="fas fa-brain text-primary"></i> AI Research
+            </span>
+            <span class="bg-white/90 py-2 px-5 rounded-full font-medium shadow-md flex items-center gap-2 hover:-translate-y-1 transition duration-300">
+                <i class="fas fa-eye text-primary"></i> Computer Vision
+            </span>
+            <span class="bg-white/90 py-2 px-5 rounded-full font-medium shadow-md flex items-center gap-2 hover:-translate-y-1 transition duration-300">
+                <i class="fas fa-robot text-primary"></i> LLMs
+            </span>
+        </div>
     </div>
 </section>
 
-<section id="projects" class="section scroll-reveal">
-    <div class="section-container">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-            <article class="project-card">
-                <div class="project-content">
-                    <div class="project-icon">
+<section id="projects" class="py-24">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-16 relative after:content-[''] after:block after:w-16 after:h-1 after:bg-gradient-to-r after:from-primary after:to-orange-500 after:mx-auto after:mt-4">Featured Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <article class="bg-white rounded-xl shadow-md hover:-translate-y-2 transition duration-300">
+                <div class="p-8 flex flex-col h-full">
+                    <div class="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center text-2xl text-primary mb-6">
                         <i class="fas fa-database"></i>
                     </div>
-                    <h3 class="project-title">Persian Medical Dataset for LLMs</h3>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-700">Persian Medical Dataset for LLMs</h3>
                     <p>Contributed to building the largest Persian textual medical dataset for training language models, enhancing healthcare AI accessibility in Persian-speaking regions.</p>
-                    <div class="project-tags">
-                        <span class="tag">NLP</span>
-                        <span class="tag">Healthcare Data</span>
-                        <span class="tag">LLMs</span>
+                    <div class="mt-auto pt-6 flex flex-wrap gap-2">
+                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">NLP</span>
+                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">Healthcare Data</span>
+                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">LLMs</span>
                     </div>
                 </div>
             </article>
 
-            <article class="project-card">
-                <div class="project-content">
-                    <div class="project-icon">
+            <article class="bg-white rounded-xl shadow-md hover:-translate-y-2 transition duration-300">
+                <div class="p-8 flex flex-col h-full">
+                    <div class="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center text-2xl text-primary mb-6">
                         <i class="fas fa-microscope"></i>
                     </div>
-                    <h3 class="project-title">3D MRI Fistula Detection</h3>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-700">3D MRI Fistula Detection</h3>
                     <p>Developing a cutting-edge computer vision model for detecting perianal fistulas using 3D MRI technology, improving diagnostic accuracy and treatment planning.</p>
-                    <div class="project-tags">
-                        <span class="tag">Computer Vision</span>
-                        <span class="tag">Medical Imaging</span>
-                        <span class="tag">AI</span>
+                    <div class="mt-auto pt-6 flex flex-wrap gap-2">
+                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">Computer Vision</span>
+                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">Medical Imaging</span>
+                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">AI</span>
                     </div>
                 </div>
             </article>
 
-            <article class="project-card">
-                <div class="project-content">
-                    <div class="project-icon">
+            <article class="bg-white rounded-xl shadow-md hover:-translate-y-2 transition duration-300">
+                <div class="p-8 flex flex-col h-full">
+                    <div class="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center text-2xl text-primary mb-6">
                         <i class="fas fa-book-medical"></i>
                     </div>
-                    <h3 class="project-title">Medical Guideline Analyzer</h3>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-700">Medical Guideline Analyzer</h3>
                     <p>Created a RAG-based system that analyzes multiple medical guidelines, highlighting similarities and differences to assist healthcare providers in decision-making.</p>
-                    <div class="project-tags">
-                        <span class="tag">RAG</span>
-                        <span class="tag">Clinical Guidelines</span>
-                        <span class="tag">NLP</span>
+                    <div class="mt-auto pt-6 flex flex-wrap gap-2">
+                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">RAG</span>
+                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">Clinical Guidelines</span>
+                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">NLP</span>
                     </div>
                 </div>
             </article>
 
-            <article class="project-card">
-                <div class="project-content">
-                    <div class="project-icon">
+            <article class="bg-white rounded-xl shadow-md hover:-translate-y-2 transition duration-300">
+                <div class="p-8 flex flex-col h-full">
+                    <div class="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center text-2xl text-primary mb-6">
                         <i class="fas fa-robot"></i>
                     </div>
-                    <h3 class="project-title">Medical AI Agents</h3>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-700">Medical AI Agents</h3>
                     <p>Currently working on developing AI agents for medical applications, focusing on improving healthcare delivery and patient outcomes.</p>
-                    <div class="project-tags">
-                        <span class="tag">AI Agents</span>
-                        <span class="tag">Healthcare</span>
-                        <span class="tag">Innovation</span>
+                    <div class="mt-auto pt-6 flex flex-wrap gap-2">
+                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">AI Agents</span>
+                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">Healthcare</span>
+                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">Innovation</span>
                     </div>
                 </div>
             </article>
@@ -91,28 +99,30 @@ title: Home
     </div>
 </section>
 
-<section id="blog" class="section scroll-reveal">
-    <div class="section-container">
-        <h2 class="section-title">Latest Insights</h2>
-        <div class="blog-grid">
+<section id="blog" class="py-24">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-16 relative after:content-[''] after:block after:w-16 after:h-1 after:bg-gradient-to-r after:from-primary after:to-orange-500 after:mx-auto after:mt-4">Latest Insights</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {% for post in site.posts limit:3 %}
-            <article class="blog-card">
-                <div class="project-content">
-                    <h3 class="project-title">{{ post.title }}</h3>
-                    <div class="post-meta">
-                        <time datetime="{{ post.date | date_to_xmlschema }}">
+            <article class="bg-white rounded-xl shadow-md hover:-translate-y-2 transition duration-300">
+                <div class="p-8 flex flex-col h-full">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-700">{{ post.title }}</h3>
+                    <div class="text-sm text-gray-600 mb-4">
+                        <time datetime="{{ post.date | date_to_xmlschema }}" class="block mb-2">
                             {{ post.date | date: "%B %d, %Y" }}
                         </time>
                         {% if post.categories %}
-                        <div class="post-categories">
+                        <div class="flex flex-wrap gap-2">
                             {% for category in post.categories %}
-                            <span class="tag">{{ category }}</span>
+                            <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">{{ category }}</span>
                             {% endfor %}
                         </div>
                         {% endif %}
                     </div>
-                    <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-                    <a href="{{ post.url | relative_url }}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    <p class="text-gray-600 mb-6">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+                    <a href="{{ post.url | relative_url }}" class="mt-auto inline-flex items-center gap-2 text-primary font-medium hover:translate-x-1 transition duration-300">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </article>
             {% endfor %}
@@ -120,35 +130,41 @@ title: Home
     </div>
 </section>
 
-<section id="journey" class="section scroll-reveal">
-    <div class="section-container">
-        <h2 class="section-title">My Journey</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>Medical Practice & Technology Integration</h3>
-                <p>Started exploring the intersection of healthcare and technology while practicing medicine, identifying opportunities for innovation.</p>
+<section id="journey" class="py-24">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-16 relative after:content-[''] after:block after:w-16 after:h-1 after:bg-gradient-to-r after:from-primary after:to-orange-500 after:mx-auto after:mt-4">My Journey</h2>
+        <div class="max-w-3xl mx-auto mt-16 py-8 relative before:absolute before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:h-full before:bg-gradient-to-b before:from-primary before:to-orange-500 before:top-0">
+            <div class="mb-12 w-[calc(50%-2rem)] mr-auto bg-white p-8 rounded-lg shadow-md relative hover:scale-105 transition duration-300 before:absolute before:w-4 before:h-4 before:bg-primary before:rounded-full before:-right-10 before:top-8">
+                <h3 class="text-xl font-semibold mb-4">Medical Practice & Technology Integration</h3>
+                <p class="text-gray-600">Started exploring the intersection of healthcare and technology while practicing medicine, identifying opportunities for innovation.</p>
             </div>
-            <div class="timeline-item">
-                <h3>AI & Computer Vision Development</h3>
-                <p>Specialized in developing AI solutions for healthcare challenges, focusing on medical imaging and natural language processing.</p>
+            <div class="mb-12 w-[calc(50%-2rem)] ml-auto bg-white p-8 rounded-lg shadow-md relative hover:scale-105 transition duration-300 before:absolute before:w-4 before:h-4 before:bg-primary before:rounded-full before:-left-10 before:top-8 md:translate-y-16">
+                <h3 class="text-xl font-semibold mb-4">AI & Computer Vision Development</h3>
+                <p class="text-gray-600">Specialized in developing AI solutions for healthcare challenges, focusing on medical imaging and natural language processing.</p>
             </div>
-            <div class="timeline-item">
-                <h3>Current Focus</h3>
-                <p>Working on advanced AI applications in healthcare, combining medical expertise with cutting-edge technology to improve patient care.</p>
+            <div class="mb-12 w-[calc(50%-2rem)] mr-auto bg-white p-8 rounded-lg shadow-md relative hover:scale-105 transition duration-300 before:absolute before:w-4 before:h-4 before:bg-primary before:rounded-full before:-right-10 before:top-8 md:translate-y-32">
+                <h3 class="text-xl font-semibold mb-4">Current Focus</h3>
+                <p class="text-gray-600">Working on advanced AI applications in healthcare, combining medical expertise with cutting-edge technology to improve patient care.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section id="contact" class="section scroll-reveal">
-    <div class="section-container">
-        <h2 class="section-title">Let's Connect</h2>
-        <div class="contact-content" style="text-align: center;">
-            <p>Interested in collaborating on healthcare AI projects or discussing medical technology? Let's connect!</p>
-            <div class="social-links" style="margin-top: 2rem;">
-                <a href="https://linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="https://twitter.com/your-handle" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-                <a href="mailto:{{ site.email }}"><i class="fas fa-envelope"></i> Email</a>
+<section id="contact" class="py-24">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-16 relative after:content-[''] after:block after:w-16 after:h-1 after:bg-gradient-to-r after:from-primary after:to-orange-500 after:mx-auto after:mt-4">Let's Connect</h2>
+        <div class="max-w-3xl mx-auto bg-gray-50 p-16 rounded-xl text-center">
+            <p class="text-lg text-gray-600 mb-8">Interested in collaborating on healthcare AI projects or discussing medical technology? Let's connect!</p>
+            <div class="flex justify-center gap-6 flex-wrap">
+                <a href="https://linkedin.com/in/your-profile" target="_blank" class="bg-white px-6 py-3 rounded-lg shadow-md flex items-center gap-2 text-gray-700 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-primary hover:to-orange-500 hover:text-white transition duration-300">
+                    <i class="fab fa-linkedin text-xl"></i> LinkedIn
+                </a>
+                <a href="https://twitter.com/your-handle" target="_blank" class="bg-white px-6 py-3 rounded-lg shadow-md flex items-center gap-2 text-gray-700 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-primary hover:to-orange-500 hover:text-white transition duration-300">
+                    <i class="fab fa-twitter text-xl"></i> Twitter
+                </a>
+                <a href="mailto:{{ site.email }}" class="bg-white px-6 py-3 rounded-lg shadow-md flex items-center gap-2 text-gray-700 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-primary hover:to-orange-500 hover:text-white transition duration-300">
+                    <i class="fas fa-envelope text-xl"></i> Email
+                </a>
             </div>
         </div>
     </div>

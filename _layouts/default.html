@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-    {% assign timestamp = site.time | date: '%s' %}
-    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ timestamp }}">
-    <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}?v={{ timestamp }}">
+    <link rel="icon" type="image/png" href="{{ '/doctor-svgrepo-com.png' | relative_url }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{{ '/assets/js/tailwind-animations.js' | relative_url }}"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ timestamp }}" defer></script>
 </head>
-<body>
-    <header class="site-header">
-        <nav class="nav-container">
-            <div class="logo">
-                <a href="{{ site.baseurl }}/">{{ site.title }}</a>
+<body class="font-['Inter'] leading-relaxed text-gray-700 bg-white">
+    <header class="fixed w-full top-0 z-50 bg-white/98 py-4 shadow-md backdrop-blur-md">
+        <nav class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="{{ '/doctor-svgrepo-com.png' | relative_url }}" alt="Logo" class="w-10 h-10">
+                <a href="{{ site.baseurl }}/" class="text-2xl font-bold bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">Dr. Developer Portfolio</a>
             </div>
-            <ul class="nav-links">
+            <ul class="flex gap-8 list-none">
                 {% for item in site.navigation %}
                 <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
                 {% endfor %}
@@ -29,14 +30,18 @@
         {{ content }}
     </main>
 
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="https://linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
-                <a href="https://twitter.com/your-handle" target="_blank">Twitter</a>
-                <a href="mailto:{{ site.email }}">Email</a>
+    <footer class="bg-gray-50 py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-8">
+                <img src="{{ '/doctor-svgrepo-com.png' | relative_url }}" alt="Logo" class="w-8 h-8">
+                <span class="text-xl font-bold bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">Dr. Developer</span>
             </div>
-            <p class="copyright">&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+            <div class="flex justify-center gap-8 flex-wrap mb-6">
+                <a href="https://linkedin.com/in/your-profile" target="_blank" class="hover:text-primary transition-colors">LinkedIn</a>
+                <a href="https://twitter.com/your-handle" target="_blank" class="hover:text-primary transition-colors">Twitter</a>
+                <a href="mailto:{{ site.email }}" class="hover:text-primary transition-colors">Email</a>
+            </div>
+            <p class="text-sm text-gray-600">&copy; {{ 'now' | date: "%Y" }} Dr. Developer Portfolio. All rights reserved.</p>
         </div>
     </footer>
 </body>
