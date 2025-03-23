@@ -1,27 +1,65 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenuClose = document.getElementById('mobile-menu-close');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-
-    function toggleMobileMenu() {
-        const isMenuOpen = mobileMenu.classList.contains('flex');
+    const navbarToggle = document.getElementById('navbar-toggle');
+    const navbarMenu = document.getElementById('navbar-menu');
+    const menuBars = navbarToggle.querySelectorAll('span:not(.sr-only)');
+    
+    function toggleMenu() {
+        const isExpanded = navbarToggle.getAttribute('aria-expanded') === 'true';
+        navbarToggle.setAttribute('aria-expanded', !isExpanded);
         
-        if (isMenuOpen) {
-            mobileMenu.classList.replace('flex', 'hidden');
-            document.body.classList.remove('overflow-hidden');
+        // Simple toggle for menu visibility
+        navbarMenu.classList.toggle('hidden');
+
+        // Simple hamburger animation
+        if (!isExpanded) {
+            menuBars[0].style.transform = 'rotate(45deg)';
+            menuBars[0].style.top = '50%';
+            menuBars[1].style.opacity = '0';
+            menuBars[2].style.transform = 'rotate(-45deg)';
+            menuBars[2].style.bottom = '45%';
         } else {
-            mobileMenu.classList.replace('hidden', 'flex');
-            document.body.classList.add('overflow-hidden');
+            menuBars[0].style.transform = '';
+            menuBars[0].style.top = '0';
+            menuBars[1].style.opacity = '1';
+            menuBars[2].style.transform = '';
+            menuBars[2].style.bottom = '0';
         }
     }
 
-    mobileMenuButton.addEventListener('click', toggleMobileMenu);
-    mobileMenuClose.addEventListener('click', toggleMobileMenu);
+    // Event Listeners
+    navbarToggle.addEventListener('click', toggleMenu);
 
-    // Close menu when clicking a link
-    mobileMenuLinks.forEach(link => {
-        link.addEventListener('click', toggleMobileMenu);
+    // Close menu on desktop view
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+            navbarMenu.classList.add('hidden');
+            navbarToggle.setAttribute('aria-expanded', 'false');
+            // Reset hamburger
+            menuBars[0].style.transform = '';
+            menuBars[0].style.top = '0';
+            menuBars[1].style.opacity = '1';
+            menuBars[2].style.transform = '';
+            menuBars[2].style.bottom = '0';
+        }
+    });
+
+    // Click handlers
+    document.addEventListener('click', (e) => {
+        const isOpen = !navbarMenu.classList.contains('hidden');
+        const isClickInside = navbarMenu.contains(e.target) || navbarToggle.contains(e.target);
+        
+        if (isOpen && !isClickInside) {
+            toggleMenu();
+        }
+    });
+
+    // Handle menu link clicks on mobile
+    navbarMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 768) {
+                toggleMenu();
+            }
+        });
     });
 });
 
