@@ -1,171 +1,286 @@
----
-layout: default
-title: Home
----
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nariman Naderi | Medical AI Researcher</title>
+  <meta name="description" content="Nariman Naderi is a physician researcher working on medical AI, LLM reliability, guideline RAG, computer vision, and clinically useful AI systems.">
+  <meta name="author" content="Nariman Naderi">
+  <meta property="og:title" content="Nariman Naderi | Medical AI Researcher">
+  <meta property="og:description" content="Physician researcher connecting clinical reasoning, research design, programming, LLMs, computer vision, and healthcare workflows.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="website_pic-min.JPG">
+  <link rel="icon" type="image/png" href="doctor-svgrepo-com.png">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<section class="bg-gradient-to-b from-yellow-50 to-accent py-16 md:py-24 text-center relative overflow-hidden mt-8">
-    <!-- Floating Circles -->
-    <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute left-[20%] top-[10%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-primary rounded-full opacity-10 animate-float-slow"></div>
-        <div class="absolute right-[10%] top-[30%] w-[250px] md:w-[500px] h-[250px] md:h-[500px] bg-primary rounded-full opacity-10 animate-float-medium delay-[5s]"></div>
-        <div class="absolute left-[35%] bottom-[5%] w-[275px] md:w-[550px] h-[275px] md:h-[550px] bg-primary rounded-full opacity-10 animate-float-fast delay-[2s]"></div>
-    </div>
-    <div class="max-w-4xl mx-auto px-4 relative z-10">
-        <div class="mx-auto mb-8 md:mb-12 w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden relative bg-gradient-to-r from-primary to-orange-500 animate-rotate-gradient flex items-center justify-center"> <!-- Removed p-1.5, added flexbox centering -->
-            <img src="website_pic-min.JPG" alt="Profile" class="w-full h-full object-cover rounded-full hover:scale-105 transition duration-300">
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Nariman Naderi home">
+        <span class="brand-mark">NN</span>
+        <span>
+          <strong>Nariman Naderi</strong>
+          <small>Medical AI Researcher</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="sr-only">Open navigation</span>
+      </button>
+
+      <div class="nav-menu" id="nav-menu" data-nav-menu>
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-orbit" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="portrait-wrap">
+          <img src="website_pic-min.JPG" alt="Portrait of Nariman Naderi">
         </div>
-        <div class="flex justify-center overflow-hidden">
-            <h1 class="text-3xl pb-1 md:text-5xl font-extrabold leading-tight mb-4 md:mb-5 bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent whitespace-nowrap border-r-4 border-primary animate-typing animate-cursor w-[300px] md:w-[600px]">Bridging Medicine & Technology</h1>
+        <p class="eyebrow">Nariman Naderi</p>
+        <h1>Bridging Medicine &amp; Technology</h1>
+        <p class="hero-copy">
+          Physician researcher in medical AI, connecting clinical reasoning, research design, programming, large language models, computer vision, and real healthcare workflows.
+        </p>
+        <div class="hero-actions" aria-label="Primary actions">
+          <a class="button primary" href="#publications">View Publications</a>
+          <a class="button secondary" href="#projects">View Projects</a>
         </div>
-        <p class="text-lg md:text-xl text-gray-700 mb-6">Physician-Developer specializing in AI, Computer Vision, and LLMs for healthcare innovation</p>
-        <div class="flex justify-center gap-4 flex-wrap">
-            <span class="bg-white/90 py-2 px-5 rounded-full font-medium shadow-md flex items-center gap-2 hover:-translate-y-1 transition duration-300">
-               <i class="fas fa-brain text-primary"></i> AI Research
-            </span>
-            <span class="bg-white/90 py-2 px-5 rounded-full font-medium shadow-md flex items-center gap-2 hover:-translate-y-1 transition duration-300">
-                <i class="fas fa-eye text-primary"></i> Computer Vision
-            </span>
-            <span class="bg-white/90 py-2 px-5 rounded-full font-medium shadow-md flex items-center gap-2 hover:-translate-y-1 transition duration-300">
-                <i class="fas fa-robot text-primary"></i> LLMs
-            </span>
+        <div class="hero-tags" aria-label="Research areas">
+          <span>AI Research</span>
+          <span>Computer Vision</span>
+          <span>LLMs</span>
         </div>
-    </div>
-</section>
 
-<section id="projects" class="py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 md:mb-16 relative after:content-[''] after:block after:w-16 after:h-1 after:bg-gradient-to-r after:from-primary after:to-orange-500 after:mx-auto after:mt-4">Featured Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            <article class="bg-white rounded-xl shadow-md hover:-translate-y-2 transition duration-300">
-                <div class="p-6 flex flex-col h-full">
-                    <div class="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center text-2xl text-primary mb-1"> <!-- Changed mb-5 to mb-3 -->
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-3 text-gray-700">Persian Medical Dataset for LLMs</h3> <!-- Set to text-lg, kept mb-3 -->
-                    <p class="text-base leading-relaxed text-gray-600">Took the lead on merging, cleaning, and standardizing data from multiple sources to create the largest Persian medical text dataset for language model training, pushing forward healthcare AI for Persian-speaking communities.</p> <!-- Set to text-base leading-relaxed -->
-                    <div class="mt-auto pt-4 flex flex-wrap gap-2">
-                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">NLP</span>
-                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">Healthcare Data</span>
-                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">LLMs</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="bg-white rounded-xl shadow-md hover:-translate-y-2 transition duration-300">
-                <div class="p-6 flex flex-col h-full">
-                    <div class="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center text-2xl text-primary mb-1"> <!-- Changed mb-5 to mb-3 -->
-                        <i class="fas fa-microscope"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-3 text-gray-700">3D MRI Fistula Detection</h3> <!-- Set to text-lg, kept mb-3 -->
-                    <p class="text-base leading-relaxed text-gray-600">Developing an advanced computer vision model for the detection and segmentation of perianal fistulas, as well as the internal anal sphincter, external anal sphincter, and supralevator muscles, using 3D segmentation techniques. This work aims to enhance diagnostic accuracy and treatment planning for both radiologists and surgeons.</p> <!-- Set to text-base leading-relaxed -->
-                    <div class="mt-auto pt-4 flex flex-wrap gap-2">
-                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">Computer Vision</span>
-                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">Medical Imaging</span>
-                        <!-- <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">AI</span> -->
-                    </div>
-                </div>
-            </article>
-
-            <article class="bg-white rounded-xl shadow-md hover:-translate-y-2 transition duration-300">
-                <div class="p-6 flex flex-col h-full">
-                    <div class="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center text-2xl text-primary mb-1"> <!-- Changed mb-5 to mb-3 -->
-                        <i class="fas fa-book-medical"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-3 text-gray-700">Medical Guideline Analyzer</h3> <!-- Set to text-lg, kept mb-3 -->
-                    <p class="text-base leading-relaxed text-gray-600">Created a RAG-based system that analyzes multiple medical guidelines, highlighting similarities and differences to assist healthcare providers in decision-making.</p> <!-- Set to text-base leading-relaxed -->
-                    <div class="mt-auto pt-4 flex flex-wrap gap-2">
-                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">RAG</span>
-                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">Clinical Guidelines</span>
-                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">NLP</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="bg-white rounded-xl shadow-md hover:-translate-y-2 transition duration-300">
-                <div class="p-6 flex flex-col h-full">
-                    <div class="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center text-2xl text-primary mb-1"> <!-- Changed mb-5 to mb-3 -->
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-3 text-gray-700">Medical AI Agents</h3> <!-- Set to text-lg, kept mb-3 -->
-                    <p class="text-base leading-relaxed text-gray-600">Currently working on developing AI agents for medical applications, focusing on improving healthcare delivery and patient outcomes.</p> <!-- Set to text-base leading-relaxed -->
-                    <div class="mt-auto pt-4 flex flex-wrap gap-2">
-                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">AI Agents</span>
-                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">Healthcare</span>
-                        <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">Innovation</span>
-                    </div>
-                </div>
-            </article>
+        <div class="hero-evidence" aria-label="Professional snapshot">
+          <div>
+            <strong>Physician researcher</strong>
+            <span>Gastroenterology and Liver Research Center, Taleghani Hospital</span>
+          </div>
+          <div>
+            <strong>Selected publications</strong>
+            <span>Medical LLMs, guideline RAG, VLMs, imaging datasets</span>
+          </div>
+          <div>
+            <strong>Technical direction</strong>
+            <span>Python, evaluation pipelines, computer vision, LLM systems</span>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section id="blog" class="py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 md:mb-16 relative after:content-[''] after:block after:w-16 after:h-1 after:bg-gradient-to-r after:from-primary after:to-orange-500 after:mx-auto after:mt-4">Latest Insights</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {% for post in site.posts limit:3 %}
-            <article class="bg-white rounded-xl shadow-md hover:-translate-y-2 transition duration-300">
-                <div class="p-6 flex flex-col h-full"> <!-- Changed p-8 to p-6 -->
-                    <h3 class="text-lg font-semibold mb-3 text-gray-700">{{ post.title }}</h3> <!-- Changed text-xl to text-lg, mb-4 to mb-3 -->
-                    <div class="text-sm text-gray-600 mb-3"> <!-- Changed mb-4 to mb-3 -->
-                        <time datetime="{{ post.date | date_to_xmlschema }}" class="block mb-2">
-                            {{ post.date | date: "%B %d, %Y" }}
-                        </time>
-                        {% if post.categories %}
-                        <div class="flex flex-wrap gap-2">
-                            {% for category in post.categories %}
-                            <span class="bg-gray-50 px-4 py-1 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition duration-300">{{ category }}</span>
-                            {% endfor %}
-                        </div>
-                        {% endif %}
-                    </div>
-                    <p class="text-base leading-relaxed text-gray-600 mb-4">{{ post.excerpt | strip_html | truncatewords: 30 }}</p> <!-- Added text-base leading-relaxed, changed mb-6 to mb-4 -->
-                    <a href="{{ post.url | relative_url }}" class="mt-auto inline-flex items-center gap-2 text-primary font-medium hover:translate-x-1 transition duration-300">
-                        Read More <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </article>
-            {% endfor %}
+    <section class="section" id="about">
+      <div class="section-heading">
+        <p>About</p>
+        <h2>A clinical bridge for practical medical AI</h2>
+      </div>
+      <div class="about-panel">
+        <div class="text-grid">
+          <p>
+            I am a physician researcher based at the Gastroenterology and Liver Research Center, Taleghani Hospital, working on AI in gastroenterology and broader medical AI. My long-term direction is radiology AI and medical computer vision, but my broader interest is building useful systems that connect clinical reality with technical possibility.
+          </p>
+          <p>
+            My work sits between clinicians, researchers, engineers, and healthcare systems. I am strongest when a problem needs clinical context, a research frame, technical implementation, and a practical sense of how the result could be used or fail in real workflows.
+          </p>
         </div>
-    </div>
-</section>
+        <div class="about-axis" aria-label="Working axis">
+          <span>Clinical reasoning</span>
+          <span>Research design</span>
+          <span>Technical implementation</span>
+          <span>Workflow reality</span>
+        </div>
+      </div>
+    </section>
 
-<section id="journey" class="py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 md:mb-16 relative after:content-[''] after:block after:w-16 after:h-1 after:bg-gradient-to-r after:from-primary after:to-orange-500 after:mx-auto after:mt-4">My Journey</h2>
-        <div class="max-w-3xl mx-auto mt-12 md:mt-16 py-8 relative before:absolute before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:h-full before:bg-gradient-to-b before:from-primary before:to-orange-500 before:top-0">
-            <div class="mb-8 md:mb-12 md:w-[calc(50%-2rem)] w-[calc(100%-2rem)] mx-auto md:mr-auto bg-white p-6 rounded-lg shadow-md relative hover:scale-105 transition duration-300 before:absolute before:w-4 before:h-4 before:bg-primary before:rounded-full before:hidden md:before:block md:before:-right-10 before:top-8"> <!-- Changed p-8 to p-6 -->
-                <h3 class="text-lg font-semibold mb-3">Medical Practice & Technology Integration</h3> <!-- Changed text-xl to text-lg, mb-4 to mb-3 -->
-                <p class="text-base leading-relaxed text-gray-600">Started exploring the intersection of healthcare and technology while practicing medicine, identifying opportunities for innovation.</p> <!-- Added text-base leading-relaxed -->
-            </div>
-            <div class="mb-8 md:mb-12 md:w-[calc(50%-2rem)] w-[calc(100%-2rem)] mx-auto md:ml-auto bg-white p-6 rounded-lg shadow-md relative hover:scale-105 transition duration-300 before:absolute before:w-4 before:h-4 before:bg-primary before:rounded-full before:hidden md:before:block md:before:-left-10 before:top-8 md:translate-y-16"> <!-- Changed p-8 to p-6 -->
-                <h3 class="text-lg font-semibold mb-3">AI & Computer Vision Development</h3> <!-- Changed text-xl to text-lg, mb-4 to mb-3 -->
-                <p class="text-base leading-relaxed text-gray-600">Specialized in developing AI solutions for healthcare challenges, focusing on medical imaging and natural language processing.</p> <!-- Added text-base leading-relaxed -->
-            </div>
-            <div class="mb-8 md:mb-12 md:w-[calc(50%-2rem)] w-[calc(100%-2rem)] mx-auto md:mr-auto bg-white p-6 rounded-lg shadow-md relative hover:scale-105 transition duration-300 before:absolute before:w-4 before:h-4 before:bg-primary before:rounded-full before:hidden md:before:block md:before:-right-10 before:top-8 md:translate-y-32"> <!-- Changed p-8 to p-6 -->
-                <h3 class="text-lg font-semibold mb-3">Current Focus</h3> <!-- Changed text-xl to text-lg, mb-4 to mb-3 -->
-                <p class="text-base leading-relaxed text-gray-600">Working on advanced AI applications in healthcare, combining medical expertise with cutting-edge technology to improve patient care.</p> <!-- Added text-base leading-relaxed -->
-            </div>
-        </div>
-    </div>
-</section>
+    <section class="section soft" id="research">
+      <div class="section-heading">
+        <p>Research</p>
+        <h2>Current themes</h2>
+        <span>My research focuses on making medical AI more reliable, clinically relevant, and usable, rather than only optimizing benchmark performance.</span>
+      </div>
+      <div class="theme-grid">
+        <article>
+          <span class="theme-number">01</span>
+          <h3>LLM confidence and uncertainty</h3>
+          <p>Evaluating how medical large language models express confidence, uncertainty, and calibration in clinical reasoning tasks.</p>
+          <span class="theme-meta">Reliability / calibration</span>
+        </article>
+        <article>
+          <span class="theme-number">02</span>
+          <h3>Clinical guideline RAG</h3>
+          <p>Using retrieval-augmented generation to synthesize overlapping or conflicting clinical guidelines into structured outputs.</p>
+          <span class="theme-meta">Guidelines / synthesis</span>
+        </article>
+        <article>
+          <span class="theme-number">03</span>
+          <h3>Vision-language models</h3>
+          <p>Studying when general-purpose vision-language models can compete with trained models in medical image tasks.</p>
+          <span class="theme-meta">Endoscopy / VLMs</span>
+        </article>
+        <article>
+          <span class="theme-number">04</span>
+          <h3>Imaging dataset quality</h3>
+          <p>Assessing medical imaging datasets for clinical relevance, bias, redundancy, and real-world applicability.</p>
+          <span class="theme-meta">Dataset realism / bias</span>
+        </article>
+      </div>
+    </section>
 
-<section id="contact" class="py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-16 relative after:content-[''] after:block after:w-16 after:h-1 after:bg-gradient-to-r after:from-primary after:to-orange-500 after:mx-auto after:mt-4">Let's Connect</h2>
-        <div class="max-w-3xl mx-auto bg-gray-50 p-16 rounded-xl text-center">
-            <p class="text-lg text-gray-600 mb-8">Interested in collaborating on healthcare AI projects or discussing medical technology? Let's connect!</p>
-            <div class="flex justify-center gap-6 flex-wrap">
-                <a href="https://linkedin.com/in/your-profile" target="_blank" class="bg-white px-6 py-3 rounded-lg shadow-md flex items-center gap-2 text-gray-700 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-primary hover:to-orange-500 hover:text-white transition duration-300">
-                    <i class="fab fa-linkedin text-xl"></i> LinkedIn
-                </a>
-                <a href="https://twitter.com/your-handle" target="_blank" class="bg-white px-6 py-3 rounded-lg shadow-md flex items-center gap-2 text-gray-700 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-primary hover:to-orange-500 hover:text-white transition duration-300">
-                    <i class="fab fa-twitter text-xl"></i> Twitter
-                </a>
-                <a href="mailto:{{ site.email }}" class="bg-white px-6 py-3 rounded-lg shadow-md flex items-center gap-2 text-gray-700 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-primary hover:to-orange-500 hover:text-white transition duration-300">
-                    <i class="fas fa-envelope text-xl"></i> Email
-                </a>
-            </div>
+    <section class="section" id="publications">
+      <div class="section-heading split">
+        <div>
+          <p>Publications</p>
+          <h2>Selected work</h2>
         </div>
-    </div>
-</section>
+        <a class="text-link" href="https://scholar.google.com/citations?user=RkGkOdwAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
+      </div>
+      <div class="publication-list">
+        <article>
+          <time>2026</time>
+          <div>
+            <span class="pub-kind">Journal article / first author</span>
+            <h3>Across generations, sizes, and types, large language models poorly report self-confidence in gastroenterology clinical reasoning tasks.</h3>
+            <p>npj Gut and Liver. First author; equal contribution with SAA Safavi-Naini.</p>
+            <a href="https://doi.org/10.1038/s44355-026-00053-3" target="_blank" rel="noreferrer">DOI</a>
+          </div>
+        </article>
+        <article>
+          <time>2026</time>
+          <div>
+            <span class="pub-kind">Journal article / RAG</span>
+            <h3>Using large language models to integrate international IBD guidelines: A retrieval-augmented generation approach.</h3>
+            <p>Colorectal Disease. Contributed author.</p>
+            <a href="https://doi.org/10.1111/codi.70436" target="_blank" rel="noreferrer">DOI</a>
+          </div>
+        </article>
+        <article>
+          <time>2025</time>
+          <div>
+            <span class="pub-kind">Journal article / vision-language models</span>
+            <h3>Vision language models versus machine learning models performance on polyp detection and classification in colonoscopy images.</h3>
+            <p>Scientific Reports. Contributed author.</p>
+            <a href="https://doi.org/10.1038/s41598-025-29566-2" target="_blank" rel="noreferrer">DOI</a>
+          </div>
+        </article>
+        <article>
+          <time>2025</time>
+          <div>
+            <span class="pub-kind">Workshop paper / first author</span>
+            <h3>Evaluating prompt engineering techniques for accuracy and confidence elicitation in medical LLMs.</h3>
+            <p>EXTRAAMAS / Lecture Notes in Computer Science.</p>
+            <a href="https://doi.org/10.1007/978-3-032-01399-6_5" target="_blank" rel="noreferrer">DOI</a>
+          </div>
+        </article>
+        <article>
+          <time>2025</time>
+          <div>
+            <span class="pub-kind">Preprint / dataset review</span>
+            <h3>State of abdominal CT datasets: A critical review of bias, clinical relevance, and real-world applicability.</h3>
+            <p>arXiv. Contributed author.</p>
+            <a href="https://arxiv.org/abs/2508.13626" target="_blank" rel="noreferrer">arXiv</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section soft" id="projects">
+      <div class="section-heading">
+        <p>Projects</p>
+        <h2>Portfolio evidence</h2>
+        <span>Selected projects are framed by problem, methods, and what they demonstrate.</span>
+      </div>
+      <div class="project-grid">
+        <article>
+          <span>Medical imaging AI</span>
+          <h3>Perifistaid MRI segmentation work</h3>
+          <p>Perianal fistula MRI segmentation validation and manuscript work, including segmentation-oriented imaging workflows and research evaluation.</p>
+          <p class="project-evidence">Evidence angle: segmentation validation, MRI workflow, manuscript-level research.</p>
+        </article>
+        <article>
+          <span>Local AI app</span>
+          <h3>Question-generation workflow</h3>
+          <p>Planning and building a local-first AI question-generation and review workflow for structured educational content.</p>
+          <p class="project-evidence">Evidence angle: practical app design, local-first AI, review workflow thinking.</p>
+        </article>
+        <article>
+          <span>LLM evaluation</span>
+          <h3>Medical LLM confidence studies</h3>
+          <p>Designed and evaluated model comparisons, prompt variants, confidence elicitation, and uncertainty analysis for medical reasoning tasks.</p>
+          <p class="project-evidence">Evidence angle: model evaluation, uncertainty, clinical reasoning experiments.</p>
+        </article>
+        <article>
+          <span>Guideline synthesis</span>
+          <h3>IBD guideline RAG workflow</h3>
+          <p>Contributed to a retrieval-augmented generation approach for integrating international inflammatory bowel disease guidelines.</p>
+          <p class="project-evidence">Evidence angle: RAG, clinical guidelines, expert-aligned synthesis.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="technical-profile">
+      <div class="section-heading">
+        <p>Technical profile</p>
+        <h2>Practical tools for research and prototypes</h2>
+      </div>
+      <div class="skills-grid">
+        <article class="featured">
+          <h3>Strongest areas</h3>
+          <ul>
+            <li>Python scripts, data workflows, and research utilities</li>
+            <li>Medical LLM experiments, RAG, prompting, and evaluation</li>
+            <li>CSV-heavy data cleaning and analysis workflows</li>
+            <li>Clinical AI problem framing and research translation</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Comfortable areas</h3>
+          <ul>
+            <li>Deep learning and computer-vision workflows</li>
+            <li>CNN/U-Net-style segmentation pipelines</li>
+            <li>Flask, FastAPI, Streamlit, and lightweight apps</li>
+            <li>Linux, Windows, remote terminals, and GPU environments</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Deliberate growth areas</h3>
+          <ul>
+            <li>More polished public repositories with reproducible READMEs</li>
+            <li>Advanced Git collaboration patterns</li>
+            <li>Deeper concurrency, multiprocessing, and performance profiling</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="contact-panel">
+        <p>Contact</p>
+        <h2>Collaboration around medical AI, LLM reliability, and imaging AI</h2>
+        <span>The best starting points are research collaboration, medical AI evaluation, clinical guideline synthesis, computer vision, and portfolio-level technical projects.</span>
+        <div class="hero-actions">
+          <a class="button primary" href="https://github.com/narimannr2x" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button secondary" href="https://scholar.google.com/citations?user=RkGkOdwAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>(c) <span data-year></span> Nariman Naderi. Static GitHub Pages site.</p>
+  </footer>
+</body>
+</html>
