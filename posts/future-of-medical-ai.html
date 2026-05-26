@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Future of Medical AI: Bridging Healthcare and Technology | Dr. Developer Portfolio</title>
+    <link rel="icon" type="image/png" href="../doctor-svgrepo-com.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script src="../assets/js/tailwind-animations.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../assets/js/main.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navbarToggle = document.getElementById('navbar-toggle');
+            const navbarMenu = document.getElementById('navbar-menu');
+            const menuBars = navbarToggle.querySelectorAll('span:not(.sr-only)');
+            
+            function toggleMenu() {
+                const isExpanded = navbarToggle.getAttribute('aria-expanded') === 'true';
+                navbarToggle.setAttribute('aria-expanded', !isExpanded);
+                
+                navbarMenu.classList.toggle('hidden');
+
+                if (!isExpanded) {
+                    menuBars[0].style.transform = 'rotate(45deg)';
+                    menuBars[0].style.top = '50%';
+                    menuBars[1].style.opacity = '0';
+                    menuBars[2].style.transform = 'rotate(-45deg)';
+                    menuBars[2].style.bottom = '45%';
+                } else {
+                    menuBars[0].style.transform = '';
+                    menuBars[0].style.top = '0';
+                    menuBars[1].style.opacity = '1';
+                    menuBars[2].style.transform = '';
+                    menuBars[2].style.bottom = '0';
+                }
+            }
+
+            navbarToggle.addEventListener('click', toggleMenu);
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    navbarMenu.classList.add('hidden');
+                    navbarToggle.setAttribute('aria-expanded', 'false');
+                    menuBars[0].style.transform = '';
+                    menuBars[0].style.top = '0';
+                    menuBars[1].style.opacity = '1';
+                    menuBars[2].style.transform = '';
+                    menuBars[2].style.bottom = '0';
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                const isOpen = !navbarMenu.classList.contains('hidden');
+                const isClickInside = navbarMenu.contains(e.target) || navbarToggle.contains(e.target);
+                
+                if (isOpen && !isClickInside) {
+                    toggleMenu();
+                }
+            });
+
+            navbarMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) {
+                        toggleMenu();
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body class="font-['Inter'] leading-relaxed text-gray-700 bg-white">
+    <header class="fixed w-full top-0 z-50 bg-white shadow-md">
+        <nav class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="../doctor-svgrepo-com.png" alt="Logo" class="h-8 md:h-10">
+                <a href="../" class="self-center text-xl md:text-2xl font-semibold whitespace-nowrap bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">Dr. Nariman Naderi</a>
+            </div>
+            
+            <button 
+                id="navbar-toggle" 
+                type="button" 
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-colors duration-200" 
+                aria-controls="navbar-menu" 
+                aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <div class="relative w-5 h-5">
+                    <span class="absolute top-0 left-0 w-full h-0.5 bg-current transform transition-transform duration-300 ease-in-out"></span>
+                    <span class="absolute top-[10px] left-0 w-full h-0.5 bg-current transition-opacity duration-300 ease-in-out"></span>
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-current transform transition-transform duration-300 ease-in-out"></span>
+                </div>
+            </button>
+
+            <div class="hidden w-full md:block md:w-auto" id="navbar-menu">
+                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent">
+                    <li>
+                        <a href="../#projects" 
+                           class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 transition-colors">
+                            Projects
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../#blog" 
+                           class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 transition-colors">
+                            Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../#journey" 
+                           class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 transition-colors">
+                            Journey
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../#contact" 
+                           class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 transition-colors">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="site-content prose max-w-none lg:prose-lg xl:prose-xl mx-auto">
+        <article class="py-24">
+            <div class="max-w-7xl mx-auto px-4">
+                <header class="text-center mb-16">
+                    <h1 class="text-4xl font-bold text-gray-700 mb-4">The Future of Medical AI: Bridging Healthcare and Technology</h1>
+                    <div class="text-gray-600 text-sm">
+                        <time datetime="2024-01-25" class="inline-block mr-4">
+                            January 25, 2024
+                        </time>
+                        <div class="flex gap-2 flex-wrap justify-center mt-2">
+                            <span class="bg-gray-100 px-4 py-1 rounded-full text-sm font-medium text-gray-700 hover:bg-primary hover:text-white transition duration-300">Healthcare AI</span>
+                            <span class="bg-gray-100 px-4 py-1 rounded-full text-sm font-medium text-gray-700 hover:bg-primary hover:text-white transition duration-300">Technology</span>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="max-w-3xl mx-auto prose prose-lg">
+                    <p>The intersection of artificial intelligence and healthcare is revolutionizing how we approach patient care and medical research. As both a physician and AI developer, I've witnessed firsthand the transformative potential of these technologies in medical settings.</p>
+
+                    <h2>Key Areas of Impact</h2>
+
+                    <h3>1. Clinical Decision Support</h3>
+                    <p>AI systems are becoming increasingly sophisticated in supporting clinical decision-making. By analyzing vast amounts of patient data and medical literature, these systems can help physicians make more informed decisions and catch potential issues earlier.</p>
+
+                    <h3>2. Medical Imaging Analysis</h3>
+                    <p>Computer vision algorithms are transforming medical imaging interpretation. From detecting subtle abnormalities in X-rays to analyzing complex 3D MRI scans, AI is enhancing our ability to diagnose conditions accurately and efficiently.</p>
+
+                    <h3>3. Natural Language Processing in Healthcare</h3>
+                    <p>The development of medical language models is breaking down barriers in healthcare communication. These systems can:</p>
+                    <ul>
+                        <li>Process and analyze clinical notes</li>
+                        <li>Extract relevant information from medical literature</li>
+                        <li>Generate comprehensive medical reports</li>
+                        <li>Facilitate multilingual healthcare communication</li>
+                    </ul>
+
+                    <h2>Challenges and Considerations</h2>
+
+                    <p>While the potential is enormous, we must address several key challenges:</p>
+
+                    <p><strong>1. Data Privacy and Security</strong></p>
+                    <ul>
+                        <li>Protecting patient information</li>
+                        <li>Ensuring HIPAA compliance</li>
+                        <li>Managing data access and sharing</li>
+                    </ul>
+
+                    <p><strong>2. Integration with Existing Systems</strong></p>
+                    <ul>
+                        <li>Compatibility with current healthcare infrastructure</li>
+                        <li>Training requirements for medical staff</li>
+                        <li>Workflow optimization</li>
+                    </ul>
+
+                    <p><strong>3. Ethical Considerations</strong></p>
+                    <ul>
+                        <li>Maintaining the human element in healthcare</li>
+                        <li>Addressing bias in AI systems</li>
+                        <li>Ensuring equitable access to AI-powered healthcare solutions</li>
+                    </ul>
+
+                    <h2>Looking Ahead</h2>
+
+                    <p>The future of medical AI lies in creating systems that augment and enhance human capabilities rather than replace them. We're moving towards a healthcare ecosystem where AI tools seamlessly integrate with clinical workflows, helping healthcare providers deliver better, more efficient care while maintaining the crucial human connection in medicine.</p>
+
+                    <p>As we continue to develop these technologies, it's essential to maintain a balanced approach that prioritizes both innovation and patient care. The goal is to create AI solutions that are not just technologically advanced, but also practical, ethical, and beneficial to both healthcare providers and patients.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="bg-gray-50 py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-8">
+                <img src="../doctor-svgrepo-com.png" alt="Logo" class="w-8 h-8">
+                <span class="text-xl font-bold bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">Dr. Developer</span>
+            </div>
+            <div class="flex justify-center gap-8 flex-wrap mb-6">
+                <a href="https://linkedin.com/in/your-profile" target="_blank" class="hover:text-primary transition-colors">LinkedIn</a>
+                <a href="https://twitter.com/your-handle" target="_blank" class="hover:text-primary transition-colors">Twitter</a>
+                <a href="mailto:your-email@example.com" class="hover:text-primary transition-colors">Email</a>
+            </div>
+            <p class="text-sm text-gray-600">&copy; 2025 Dr. Developer Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
