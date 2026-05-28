@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://narimannr2x.github.io/sitemap.xml
