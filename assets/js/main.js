@@ -16,14 +16,33 @@ document.addEventListener("DOMContentLoaded", () => {
     navMenu.classList.remove("is-open");
   };
 
+  const openMenu = () => {
+    navToggle.setAttribute("aria-expanded", "true");
+    navMenu.classList.add("is-open");
+  };
+
   navToggle.addEventListener("click", () => {
     const expanded = navToggle.getAttribute("aria-expanded") === "true";
-    navToggle.setAttribute("aria-expanded", String(!expanded));
-    navMenu.classList.toggle("is-open", !expanded);
+
+    if (expanded) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   });
 
   navMenu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!navMenu.classList.contains("is-open")) {
+      return;
+    }
+
+    if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
+      closeMenu();
+    }
   });
 
   document.addEventListener("keydown", (event) => {
@@ -32,4 +51,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-

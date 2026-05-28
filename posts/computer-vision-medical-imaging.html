@@ -1,211 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cracking 3D MRI Analysis with Deep Learning (Powered by nnU-Net) | Dr. Developer Portfolio</title>
-    <link rel="icon" type="image/png" href="../doctor-svgrepo-com.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-    <script src="../assets/js/tailwind-animations.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="../assets/js/main.js" defer></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navbarToggle = document.getElementById('navbar-toggle');
-            const navbarMenu = document.getElementById('navbar-menu');
-            const menuBars = navbarToggle.querySelectorAll('span:not(.sr-only)');
-            
-            function toggleMenu() {
-                const isExpanded = navbarToggle.getAttribute('aria-expanded') === 'true';
-                navbarToggle.setAttribute('aria-expanded', !isExpanded);
-                
-                navbarMenu.classList.toggle('hidden');
-
-                if (!isExpanded) {
-                    menuBars[0].style.transform = 'rotate(45deg)';
-                    menuBars[0].style.top = '50%';
-                    menuBars[1].style.opacity = '0';
-                    menuBars[2].style.transform = 'rotate(-45deg)';
-                    menuBars[2].style.bottom = '45%';
-                } else {
-                    menuBars[0].style.transform = '';
-                    menuBars[0].style.top = '0';
-                    menuBars[1].style.opacity = '1';
-                    menuBars[2].style.transform = '';
-                    menuBars[2].style.bottom = '0';
-                }
-            }
-
-            navbarToggle.addEventListener('click', toggleMenu);
-
-            window.addEventListener('resize', () => {
-                if (window.innerWidth >= 768) {
-                    navbarMenu.classList.add('hidden');
-                    navbarToggle.setAttribute('aria-expanded', 'false');
-                    menuBars[0].style.transform = '';
-                    menuBars[0].style.top = '0';
-                    menuBars[1].style.opacity = '1';
-                    menuBars[2].style.transform = '';
-                    menuBars[2].style.bottom = '0';
-                }
-            });
-
-            document.addEventListener('click', (e) => {
-                const isOpen = !navbarMenu.classList.contains('hidden');
-                const isClickInside = navbarMenu.contains(e.target) || navbarToggle.contains(e.target);
-                
-                if (isOpen && !isClickInside) {
-                    toggleMenu();
-                }
-            });
-
-            navbarMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth < 768) {
-                        toggleMenu();
-                    }
-                });
-            });
-        });
-    </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medical Imaging AI Beyond the Model | Nariman Naderi</title>
+  <meta name="description" content="A short note by Nariman Naderi on medical imaging AI, segmentation workflows, data structure, preprocessing, evaluation, and clinical meaning.">
+  <meta name="author" content="Nariman Naderi">
+  <meta property="og:title" content="Medical Imaging AI Beyond the Model">
+  <meta property="og:description" content="Medical imaging AI depends on data structure, preprocessing, evaluation, and clinical meaning as much as architecture choice.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="../website_pic-min.JPG">
+  <link rel="icon" type="image/png" href="../doctor-svgrepo-com.png">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script src="../assets/js/main.js" defer></script>
 </head>
-<body class="font-['Inter'] leading-relaxed text-gray-700 bg-white">
-    <header class="fixed w-full top-0 z-50 bg-white shadow-md">
-        <nav class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <div class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="../doctor-svgrepo-com.png" alt="Logo" class="h-8 md:h-10">
-                <a href="../" class="self-center text-xl md:text-2xl font-semibold whitespace-nowrap bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">Dr. Nariman Naderi</a>
-            </div>
-            
-            <button 
-                id="navbar-toggle" 
-                type="button" 
-                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-colors duration-200" 
-                aria-controls="navbar-menu" 
-                aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <div class="relative w-5 h-5">
-                    <span class="absolute top-0 left-0 w-full h-0.5 bg-current transform transition-transform duration-300 ease-in-out"></span>
-                    <span class="absolute top-[10px] left-0 w-full h-0.5 bg-current transition-opacity duration-300 ease-in-out"></span>
-                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-current transform transition-transform duration-300 ease-in-out"></span>
-                </div>
-            </button>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-            <div class="hidden w-full md:block md:w-auto" id="navbar-menu">
-                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent">
-                    <li>
-                        <a href="../#projects" 
-                           class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 transition-colors">
-                            Projects
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../#blog" 
-                           class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 transition-colors">
-                            Blog
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../#journey" 
-                           class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 transition-colors">
-                            Journey
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../#contact" 
-                           class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 transition-colors">
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="../#top" aria-label="Nariman Naderi home">
+        <span class="brand-mark">NN</span>
+        <span>
+          <strong>Nariman Naderi</strong>
+          <small>Medical AI Researcher</small>
+        </span>
+      </a>
 
-    <main class="site-content prose max-w-none lg:prose-lg xl:prose-xl mx-auto">
-        <article class="py-24">
-            <div class="max-w-7xl mx-auto px-4">
-                <header class="text-center mb-16">
-                    <h1 class="text-4xl font-bold text-gray-700 mb-4">Cracking 3D MRI Analysis with Deep Learning (Powered by nnU-Net)</h1>
-                    <div class="text-gray-600 text-sm">
-                        <time datetime="2024-01-20" class="inline-block mr-4">
-                            January 20, 2024
-                        </time>
-                        <div class="flex gap-2 flex-wrap justify-center mt-2">
-                            <span class="bg-gray-100 px-4 py-1 rounded-full text-sm font-medium text-gray-700 hover:bg-primary hover:text-white transition duration-300">Computer Vision</span>
-                            <span class="bg-gray-100 px-4 py-1 rounded-full text-sm font-medium text-gray-700 hover:bg-primary hover:text-white transition duration-300">Medical Imaging</span>
-                            <span class="bg-gray-100 px-4 py-1 rounded-full text-sm font-medium text-gray-700 hover:bg-primary hover:text-white transition duration-300">AI</span>
-                        </div>
-                    </div>
-                </header>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="sr-only">Open navigation</span>
+      </button>
 
-                <div class="max-w-3xl mx-auto prose prose-lg">
-                    <p>Medical imaging is one of the toughest playgrounds for AI — 3D scans, crazy complex anatomy, and sky-high accuracy demands. Here's a look at how we're tackling it using <strong>nnU-Net</strong>, focused on detecting perianal fistulas.</p>
+      <div class="nav-menu" id="nav-menu" data-nav-menu>
+        <a href="../#about">About</a>
+        <a href="../#research">Research</a>
+        <a href="../#publications">Publications</a>
+        <a href="../#projects">Projects</a>
+        <a href="../#insights">Insights</a>
+        <a href="../#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-                    <h3>The Big Challenges:</h3>
-
-                    <ul>
-                        <li><strong>Crazy 3D Complexity:</strong> Multiple planes, messy tissue contrasts, and tangled structures.</li>
-                        <li><strong>Data Drama:</strong> Small datasets, privacy hurdles, tricky annotations.</li>
-                        <li><strong>Clinical Pressure:</strong> Fast, accurate, and interpretable outputs are a must.</li>
-                    </ul>
-
-                    <h3>How We're Building It:</h3>
-
-                    <ul>
-                        <li><strong>nnU-Net Backbone:</strong> Using nnU-Net's dynamic pipeline to automatically adapt preprocessing, architecture, and training to our 3D MRI data.</li>
-                        <li><strong>Multi-Scale Learning:</strong> Capturing fine details and large anatomical context.</li>
-                        <li><strong>Data Handling:</strong> Intensity normalization, aggressive augmentations (flips, rotations, elastic deformations) — built into the nnU-Net workflow.</li>
-                    </ul>
-
-                    <h3>Our Pipeline:</h3>
-
-                    <ul>
-                        <li>Preprocessed and augmented MRI volumes → 3D nnU-Net segmentation → Post-processing refinement.</li>
-                        <li>Cross-validation and expert radiologist feedback to ensure clinical reliability.</li>
-                    </ul>
-
-                    <h3>What's Working:</h3>
-
-                    <ul>
-                        <li>Boosted detection accuracy.</li>
-                        <li>Shorter analysis time.</li>
-                        <li>Better support for surgical planning and improved patient outcomes.</li>
-                    </ul>
-
-                    <h3>What's Next:</h3>
-
-                    <ul>
-                        <li>Fine-tuning nnU-Net for even tougher cases (tiny fistulas, complex anatomy).</li>
-                        <li>Exploring self-attention modules and multi-task learning extensions.</li>
-                        <li>Moving toward real-time integration into clinical workflows.</li>
-                    </ul>
-
-                    <hr>
-
-                    <p><strong>Bottom line:</strong><br>
-                    Using nnU-Net's flexibility with solid medical insight, we're making 3D MRI segmentation faster, smarter, and actually usable for better patient care.</p>
-                </div>
-            </div>
-        </article>
-    </main>
-
-    <footer class="bg-gray-50 py-12 mt-16">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="flex items-center justify-center gap-2 mb-8">
-                <img src="../doctor-svgrepo-com.png" alt="Logo" class="w-8 h-8">
-                <span class="text-xl font-bold bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">Dr. Developer</span>
-            </div>
-            <div class="flex justify-center gap-8 flex-wrap mb-6">
-                <a href="https://linkedin.com/in/your-profile" target="_blank" class="hover:text-primary transition-colors">LinkedIn</a>
-                <a href="https://twitter.com/your-handle" target="_blank" class="hover:text-primary transition-colors">Twitter</a>
-                <a href="mailto:your-email@example.com" class="hover:text-primary transition-colors">Email</a>
-            </div>
-            <p class="text-sm text-gray-600">&copy; 2025 Dr. Developer Portfolio. All rights reserved.</p>
+  <main class="article-main" id="main">
+    <article class="article-shell">
+      <header class="article-header">
+        <p class="article-kicker">Computer vision</p>
+        <h1>Medical imaging AI beyond the model</h1>
+        <div class="article-meta">
+          <time datetime="2026-05-28">Updated May 28, 2026</time>
+          <span>Segmentation</span>
+          <span>Imaging workflows</span>
         </div>
-    </footer>
+      </header>
+
+      <div class="article-body">
+        <p>
+          In medical imaging AI, the model architecture is only one part of the work. Segmentation and computer-vision projects depend heavily on how the data is defined, prepared, checked, evaluated, and connected back to clinical meaning.
+        </p>
+
+        <h2>Before training, the dataset has already made decisions</h2>
+        <p>
+          Imaging datasets carry many hidden choices: acquisition protocol, anatomy coverage, annotation style, file format, preprocessing, exclusion criteria, and quality control. These choices shape what a model can learn and how honest the evaluation will be.
+        </p>
+        <ul>
+          <li>Image and mask alignment must be verified before metric reporting means anything.</li>
+          <li>Preprocessing should be documented enough for another person to reproduce the pipeline.</li>
+          <li>Clinical labels and segmentation targets should match the question the project claims to answer.</li>
+        </ul>
+
+        <h2>Evaluation has to be clinically readable</h2>
+        <p>
+          Dice, IoU, sensitivity, and visual overlays are useful, but they do not automatically explain whether a result matters clinically. A segmentation workflow should connect metrics with case-level review, failure examples, and the likely consequences of errors.
+        </p>
+        <p>
+          This is especially important in radiology-adjacent work, where the technical pipeline can look successful while the output still misses the clinical structure that makes the task meaningful.
+        </p>
+
+        <p class="article-note">
+          A strong imaging AI project is not only a trained model. It is a reproducible workflow with transparent data handling, readable evaluation, and clear clinical boundaries.
+        </p>
+
+        <h2>Why this is part of my direction</h2>
+        <p>
+          My long-term focus is radiology AI and medical computer vision. The work that interests me most is the full pipeline: clinical question, dataset structure, preprocessing, model behavior, evaluation, and the practical limits of deployment.
+        </p>
+
+        <a class="button secondary article-back" href="../#insights">Back to insights</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>(c) <span data-year></span> Nariman Naderi. Static GitHub Pages site.</p>
+      <div aria-label="Footer links">
+        <a href="https://www.linkedin.com/in/nariman-naderi/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://x.com/NarimanMD" target="_blank" rel="noreferrer">X</a>
+        <a href="mailto:narimannaderi.md@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
-
