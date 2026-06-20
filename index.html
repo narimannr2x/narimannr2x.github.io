@@ -52,6 +52,9 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <div class="scroll-rail" aria-hidden="true"><div class="scroll-bar" data-scroll-bar></div></div>
+  <div class="scroll-scale" aria-hidden="true" data-scroll-scale></div>
+
   <header class="site-header">
     <nav class="nav" aria-label="Primary navigation">
       <a class="brand" href="#top" aria-label="Nariman Naderi home">
@@ -83,199 +86,279 @@
   <main id="main">
     <section class="hero" id="top">
       <div class="hero-inner">
+        <div class="viewer-coords" aria-hidden="true">
+          <span>SEC 01 / 07</span>
+          <span>SCAN ACTIVE</span>
+        </div>
         <div class="hero-copy-block">
           <p class="eyebrow">Physician researcher / medical AI connector</p>
-          <h1>Nariman Naderi</h1>
+          <h1>Nariman<br>Naderi<span class="accent">.</span></h1>
           <p class="hero-lede">
-            I work at the intersection of clinical reasoning, research design, technical implementation, and healthcare workflow reality.
+            I work where <strong>clinical reasoning</strong>, research design, technical implementation, and healthcare workflow reality meet.
           </p>
           <p class="hero-support">
-            My current work focuses on medical AI in gastroenterology, LLM reliability, clinical guideline synthesis, vision-language models, and imaging dataset quality, with a longer-term direction toward radiology AI and practical medical computer vision.
+            Current focus: medical AI in gastroenterology, LLM reliability, clinical guideline synthesis, vision-language models, and imaging dataset quality &mdash; direction toward radiology AI and practical medical computer vision.
           </p>
           <div class="hero-actions" aria-label="Primary actions">
-            <a class="button primary" href="#publications">View publications</a>
+            <a class="button primary" href="#publications">View publications <span class="arrow">→</span></a>
             <a class="button secondary" href="#projects">See project evidence</a>
           </div>
         </div>
 
-        <aside class="hero-card" aria-label="Professional snapshot">
-          <div class="portrait-wrap">
-            <img src="website_pic-min.JPG" alt="Portrait of Nariman Naderi">
+        <aside class="hero-viewer" aria-label="Professional snapshot">
+          <div class="viewer-bar">
+            <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <span>CONFIDENCEvsTRUTH.dcm</span>
+            <span>READ</span>
           </div>
-          <dl class="snapshot-list">
-            <div>
-              <dt>Base</dt>
-              <dd>Gastroenterology and Liver Research Center, Taleghani Hospital</dd>
+          <div class="viewer-body">
+            <p class="viewer-title">Readout &mdash; LLM self-calibration</p>
+            <p class="viewer-readout">
+              Models report <em>poor</em> self-confidence in gastroenterology reasoning.
+            </p>
+
+            <div class="calibration" aria-hidden="true">
+              <svg viewBox="0 0 320 170" role="img" aria-label="Calibration curve: model confidence versus truth, below ideal diagonal">
+                <g class="cal-grid">
+                  <line x1="40" y1="20" x2="40" y2="150"/>
+                  <line x1="40" y1="150" x2="300" y2="150"/>
+                  <line x1="40" y1="50" x2="300" y2="50"/>
+                  <line x1="40" y1="85" x2="300" y2="85"/>
+                  <line x1="40" y1="120" x2="300" y2="120"/>
+                  <line x1="105" y1="20" x2="105" y2="150"/>
+                  <line x1="170" y1="20" x2="170" y2="150"/>
+                  <line x1="235" y1="20" x2="235" y2="150"/>
+                </g>
+                <polyline class="cal-ideal" points="40,150 300,20"/>
+                <polyline class="cal-curve" data-cal-curve points="40,145 80,140 120,128 160,112 200,95 240,80 280,70 300,66"/>
+                <g class="cal-points">
+                  <circle class="cal-point" data-cal-point cx="80" cy="140" r="3.5"/>
+                  <circle class="cal-point" data-cal-point cx="120" cy="128" r="3.5"/>
+                  <circle class="cal-point" data-cal-point cx="160" cy="112" r="3.5"/>
+                  <circle class="cal-point" data-cal-point cx="200" cy="95" r="3.5"/>
+                  <circle class="cal-point" data-cal-point cx="240" cy="80" r="3.5"/>
+                  <circle class="cal-point" data-cal-point cx="280" cy="70" r="3.5"/>
+                </g>
+                <g class="cal-axis">
+                  <text x="40" y="165">0.0</text>
+                  <text x="160" y="165">0.5</text>
+                  <text x="290" y="165">1.0</text>
+                  <text x="10" y="24">1.0</text>
+                  <text x="14" y="152">0.0</text>
+                </g>
+              </svg>
+              <div class="cal-caption">
+                <span>Model confidence →</span>
+                <span><em>— ideal</em> &nbsp; — actual</span>
+                <span>Truth →</span>
+              </div>
             </div>
-            <div>
-              <dt>Research spine</dt>
-              <dd>Medical LLMs, guideline RAG, VLMs, imaging datasets</dd>
-            </div>
-            <div>
-              <dt>Builder evidence</dt>
-              <dd>Python workflows, evaluation pipelines, prototypes, medical imaging work</dd>
-            </div>
-          </dl>
+
+            <dl class="snapshot-list">
+              <div>
+                <dt>Base</dt>
+                <dd>Gastroenterology &amp; Liver Research Center, Taleghani Hospital</dd>
+              </div>
+              <div>
+                <dt>Research spine</dt>
+                <dd>Medical LLMs · guideline RAG · VLMs · imaging datasets</dd>
+              </div>
+              <div>
+                <dt>Builder evidence</dt>
+                <dd>Python workflows · evaluation pipelines · prototypes · medical imaging</dd>
+              </div>
+            </dl>
+          </div>
         </aside>
       </div>
     </section>
 
     <section class="section" id="about">
-      <div class="section-heading">
+      <div class="section-heading reveal">
         <p>About</p>
         <h2>A clinical bridge for practical medical AI</h2>
         <span>My strongest role is connecting the clinical problem, the research frame, the implementation path, and the real-world failure modes.</span>
       </div>
       <div class="about-grid">
-        <article class="lead-panel">
+        <article class="lead-panel reveal">
           <p>
-            I am a physician researcher based at the Gastroenterology and Liver Research Center, Taleghani Hospital, working on AI in gastroenterology and broader medical AI. I am a general physician with broad clinical exposure and a technical direction shaped by Python, machine learning, deep learning, computer vision, and large language models.
+            I am a <strong>physician researcher</strong> based at the Gastroenterology and Liver Research Center, Taleghani Hospital, working on AI in gastroenterology and broader medical AI. General physician with broad clinical exposure and a technical direction shaped by Python, machine learning, deep learning, computer vision, and large language models.
           </p>
           <p>
-            I am most interested in systems that are useful under clinical constraints: reliable enough to study seriously, transparent enough to evaluate, and practical enough to fit real healthcare workflows.
+            I am most interested in systems that are <strong>useful under clinical constraints</strong>: reliable enough to study seriously, transparent enough to evaluate, and practical enough to fit real healthcare workflows.
           </p>
         </article>
-        <div class="axis-grid" aria-label="Working axis">
-          <span>Clinical reasoning</span>
-          <span>Research design</span>
-          <span>Technical implementation</span>
-          <span>Workflow reality</span>
+        <div class="about-side">
+          <figure class="portrait reveal" aria-label="Nariman Naderi portrait">
+            <img src="website_pic-min.JPG" alt="Portrait of Nariman Naderi" width="640" height="800" loading="lazy">
+            <figcaption>Physician researcher · Taleghani Hospital</figcaption>
+          </figure>
+          <div class="axis-grid reveal" aria-label="Working axis">
+            <span>Clinical reasoning</span>
+            <span>Research design</span>
+            <span>Technical implementation</span>
+            <span>Workflow reality</span>
+          </div>
         </div>
       </div>
     </section>
 
+    <div class="divider reveal" aria-hidden="true">
+      <svg viewBox="0 0 90 22"><path d="M0 11 L20 11 L26 4 L32 18 L38 11 L60 11 L66 6 L72 16 L78 11 L90 11"/></svg>
+      <span>field notes</span>
+    </div>
+
     <section class="section band" id="research">
-      <div class="section-heading">
+      <div class="section-heading reveal">
         <p>Research</p>
         <h2>Current themes</h2>
-        <span>Research-first proof: selected themes where clinical relevance, reliability, and evaluation matter more than benchmark appearance alone.</span>
+        <span>Research-first proof: themes where clinical relevance, reliability, and evaluation matter more than benchmark appearance alone.</span>
       </div>
       <div class="theme-grid">
-        <article>
-          <span class="theme-number">01</span>
+        <article class="reveal" data-delay="1">
+          <span class="theme-number">01 / reliability</span>
           <h3>LLM confidence and uncertainty</h3>
           <p>Evaluating how medical large language models express confidence, uncertainty, and calibration in clinical reasoning tasks.</p>
           <span class="theme-meta">Reliability / calibration</span>
         </article>
-        <article>
-          <span class="theme-number">02</span>
+        <article class="reveal" data-delay="2">
+          <span class="theme-number">02 / synthesis</span>
           <h3>Clinical guideline RAG</h3>
           <p>Using retrieval-augmented generation to synthesize overlapping or conflicting clinical guidelines into structured outputs.</p>
           <span class="theme-meta">Guidelines / synthesis</span>
         </article>
-        <article>
-          <span class="theme-number">03</span>
+        <article class="reveal" data-delay="3">
+          <span class="theme-number">03 / vision</span>
           <h3>Vision-language models</h3>
           <p>Studying when general-purpose vision-language models can compete with trained models in medical image tasks.</p>
           <span class="theme-meta">Endoscopy / VLMs</span>
         </article>
-        <article>
-          <span class="theme-number">04</span>
+        <article class="reveal" data-delay="4">
+          <span class="theme-number">04 / data</span>
           <h3>Imaging dataset quality</h3>
           <p>Assessing medical imaging datasets for clinical relevance, bias, redundancy, and real-world applicability.</p>
           <span class="theme-meta">Dataset realism / bias</span>
         </article>
       </div>
+
+      <div class="stats-strip reveal">
+        <div class="stat">
+          <div class="stat-num" data-count="5">0</div>
+          <div class="stat-label">Publications · 2025–26</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="2">0</div>
+          <div class="stat-label">First-author works</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="4">0</div>
+          <div class="stat-label">Active research themes</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="3">0</div>
+          <div class="stat-label">Domain areas · GI · CV · LLM</div>
+        </div>
+      </div>
     </section>
 
     <section class="section" id="publications">
-      <div class="section-heading split">
+      <div class="section-heading split reveal">
         <div>
           <p>Publications</p>
           <h2>Selected work</h2>
         </div>
-        <a class="text-link" href="https://scholar.google.com/citations?user=RkGkOdwAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
+        <a class="text-link" href="https://scholar.google.com/citations?user=RkGkOdwAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar →</a>
       </div>
       <div class="publication-list">
-        <article>
+        <article class="reveal">
           <time>2026</time>
           <div>
-            <span class="pub-kind">Journal article / first author</span>
+            <span class="pub-kind">Journal article · first author</span>
             <h3>Across generations, sizes, and types, large language models poorly report self-confidence in gastroenterology clinical reasoning tasks.</h3>
             <p>npj Gut and Liver. First author; equal contribution with SAA Safavi-Naini.</p>
-            <a href="https://doi.org/10.1038/s44355-026-00053-3" target="_blank" rel="noreferrer">DOI</a>
+            <a href="https://doi.org/10.1038/s44355-026-00053-3" target="_blank" rel="noreferrer">DOI ↗</a>
           </div>
         </article>
-        <article>
+        <article class="reveal" data-delay="1">
           <time>2026</time>
           <div>
-            <span class="pub-kind">Journal article / RAG</span>
+            <span class="pub-kind">Journal article · RAG</span>
             <h3>Using large language models to integrate international IBD guidelines: A retrieval-augmented generation approach.</h3>
             <p>Colorectal Disease. Contributed author.</p>
-            <a href="https://doi.org/10.1111/codi.70436" target="_blank" rel="noreferrer">DOI</a>
+            <a href="https://doi.org/10.1111/codi.70436" target="_blank" rel="noreferrer">DOI ↗</a>
           </div>
         </article>
-        <article>
+        <article class="reveal" data-delay="2">
           <time>2025</time>
           <div>
-            <span class="pub-kind">Journal article / vision-language models</span>
+            <span class="pub-kind">Journal article · vision-language models</span>
             <h3>Vision language models versus machine learning models performance on polyp detection and classification in colonoscopy images.</h3>
             <p>Scientific Reports. Contributed author.</p>
-            <a href="https://doi.org/10.1038/s41598-025-29566-2" target="_blank" rel="noreferrer">DOI</a>
+            <a href="https://doi.org/10.1038/s41598-025-29566-2" target="_blank" rel="noreferrer">DOI ↗</a>
           </div>
         </article>
-        <article>
+        <article class="reveal" data-delay="3">
           <time>2025</time>
           <div>
-            <span class="pub-kind">Workshop paper / first author</span>
+            <span class="pub-kind">Workshop paper · first author</span>
             <h3>Evaluating prompt engineering techniques for accuracy and confidence elicitation in medical LLMs.</h3>
             <p>EXTRAAMAS / Lecture Notes in Computer Science.</p>
-            <a href="https://doi.org/10.1007/978-3-032-01399-6_5" target="_blank" rel="noreferrer">DOI</a>
+            <a href="https://doi.org/10.1007/978-3-032-01399-6_5" target="_blank" rel="noreferrer">DOI ↗</a>
           </div>
         </article>
-        <article>
+        <article class="reveal" data-delay="4">
           <time>2025</time>
           <div>
-            <span class="pub-kind">Preprint / dataset review</span>
+            <span class="pub-kind">Preprint · dataset review</span>
             <h3>State of abdominal CT datasets: A critical review of bias, clinical relevance, and real-world applicability.</h3>
             <p>arXiv. Contributed author.</p>
-            <a href="https://arxiv.org/abs/2508.13626" target="_blank" rel="noreferrer">arXiv</a>
+            <a href="https://arxiv.org/abs/2508.13626" target="_blank" rel="noreferrer">arXiv ↗</a>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="section band" id="projects">
-      <div class="section-heading">
+    <section class="section dark" id="projects">
+      <div class="section-heading reveal">
         <p>Projects</p>
         <h2>Builder evidence</h2>
         <span>Projects are presented as evidence of direction and capability, not as claims of finished clinical products.</span>
       </div>
       <div class="project-grid">
-        <article>
+        <article class="reveal" data-delay="1">
           <span>Medical imaging AI</span>
           <h3>Perifistaid MRI segmentation work</h3>
           <p>Perianal fistula MRI segmentation validation and manuscript work, including segmentation-oriented imaging workflows and research evaluation.</p>
-          <p class="project-evidence">Proves: segmentation validation, MRI workflow thinking, manuscript-level research discipline.</p>
+          <p class="project-evidence">segmentation validation · MRI workflow thinking · manuscript-level research discipline</p>
         </article>
-        <article>
+        <article class="reveal" data-delay="2">
           <span>Local AI app</span>
           <h3>Question-generation workflow</h3>
           <p>Planning and building a local-first AI question-generation and review workflow for structured educational content.</p>
-          <p class="project-evidence">Proves: practical app design, local-first AI thinking, review workflow structure.</p>
+          <p class="project-evidence">practical app design · local-first AI thinking · review workflow structure</p>
         </article>
-        <article>
+        <article class="reveal" data-delay="3">
           <span>LLM evaluation</span>
           <h3>Medical LLM confidence studies</h3>
           <p>Designed and evaluated model comparisons, prompt variants, confidence elicitation, and uncertainty analysis for medical reasoning tasks.</p>
-          <p class="project-evidence">Proves: model evaluation, uncertainty framing, clinical reasoning experiments.</p>
+          <p class="project-evidence">model evaluation · uncertainty framing · clinical reasoning experiments</p>
         </article>
-        <article>
+        <article class="reveal" data-delay="4">
           <span>Guideline synthesis</span>
           <h3>IBD guideline RAG workflow</h3>
           <p>Contributed to a retrieval-augmented generation approach for integrating international inflammatory bowel disease guidelines.</p>
-          <p class="project-evidence">Proves: RAG concepts, clinical guideline structure, expert-aligned synthesis.</p>
+          <p class="project-evidence">RAG concepts · clinical guideline structure · expert-aligned synthesis</p>
         </article>
       </div>
     </section>
 
     <section class="section" id="technical-profile">
-      <div class="section-heading">
+      <div class="section-heading reveal">
         <p>Technical profile</p>
         <h2>Practical tools for research and prototypes</h2>
       </div>
       <div class="skills-grid">
-        <article class="featured">
+        <article class="featured reveal">
           <h3>Strongest areas</h3>
           <ul>
             <li>Python scripts, data workflows, and research utilities</li>
@@ -284,7 +367,7 @@
             <li>Clinical AI problem framing and research translation</li>
           </ul>
         </article>
-        <article>
+        <article class="reveal" data-delay="1">
           <h3>Comfortable areas</h3>
           <ul>
             <li>Deep learning and computer-vision workflows</li>
@@ -293,7 +376,7 @@
             <li>Linux, Windows, remote terminals, and GPU environments</li>
           </ul>
         </article>
-        <article>
+        <article class="reveal" data-delay="2">
           <h3>Growth areas</h3>
           <ul>
             <li>More polished public repositories with reproducible READMEs</li>
@@ -304,24 +387,29 @@
       </div>
     </section>
 
+    <div class="divider reveal" aria-hidden="true">
+      <svg viewBox="0 0 90 22"><path d="M0 11 L20 11 L26 4 L32 18 L38 11 L60 11 L66 6 L72 16 L78 11 L90 11"/></svg>
+      <span>short notes</span>
+    </div>
+
     <section class="section band" id="insights">
-      <div class="section-heading">
+      <div class="section-heading reveal">
         <p>Insights</p>
         <h2>Short notes on medical AI systems</h2>
-        <span>Brief field notes that connect research questions, implementation choices, and clinical constraints.</span>
+        <span>Brief field notes connecting research questions, implementation choices, and clinical constraints.</span>
       </div>
       <div class="insight-grid">
-        <article>
+        <article class="reveal" data-delay="1">
           <span>Guideline RAG</span>
           <h3><a href="posts/rag-medical-guidelines.html">Making medical guidelines usable with RAG</a></h3>
           <p>A short note on why retrieval alone is not enough: guideline systems need source tracing, conflict handling, and careful evaluation.</p>
         </article>
-        <article>
+        <article class="reveal" data-delay="2">
           <span>Medical AI</span>
           <h3><a href="posts/future-of-medical-ai.html">The practical future of medical AI</a></h3>
           <p>A grounded view of medical AI as a workflow, evaluation, and trust problem, not only a model-performance problem.</p>
         </article>
-        <article>
+        <article class="reveal" data-delay="3">
           <span>Computer vision</span>
           <h3><a href="posts/computer-vision-medical-imaging.html">Medical imaging AI beyond the model</a></h3>
           <p>Why segmentation work depends on data structure, preprocessing, evaluation, and clinical meaning as much as architecture choice.</p>
@@ -330,12 +418,12 @@
     </section>
 
     <section class="section contact-section" id="contact">
-      <div class="contact-panel">
+      <div class="contact-panel reveal">
         <p>Contact</p>
         <h2>Collaboration around medical AI, LLM reliability, and imaging AI</h2>
         <span>The best starting points are research collaboration, medical AI evaluation, clinical guideline synthesis, computer vision, and portfolio-level technical projects.</span>
         <div class="hero-actions">
-          <a class="button primary" href="https://github.com/narimannr2x" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button primary" href="https://github.com/narimannr2x" target="_blank" rel="noreferrer">GitHub <span class="arrow">→</span></a>
           <a class="button secondary" href="https://scholar.google.com/citations?user=RkGkOdwAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
         </div>
         <div class="contact-links" aria-label="Additional contact links">
@@ -349,7 +437,7 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <p>(c) <span data-year></span> Nariman Naderi. Static GitHub Pages site.</p>
+      <p>© <span data-year></span> Nariman Naderi · Static GitHub Pages · reading-room build</p>
       <div aria-label="Footer links">
         <a href="https://www.linkedin.com/in/nariman-naderi/" target="_blank" rel="noreferrer">LinkedIn</a>
         <a href="https://x.com/NarimanMD" target="_blank" rel="noreferrer">X</a>
