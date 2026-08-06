@@ -354,9 +354,9 @@ h1, h2, h3, p { margin: 0; overflow-wrap: anywhere; }
 .hero-inner {
   position: relative;
   width: min(var(--max), calc(100% - 2rem));
-  min-height: calc(100vh - 73px);
+  min-height: calc(78vh - 73px);
   margin: 0 auto;
-  padding: clamp(3rem, 7vw, 6rem) 0;
+  padding: clamp(1.75rem, 4.5vw, 3.5rem) 0;
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
   align-items: center;
@@ -681,7 +681,7 @@ h1 .accent {
 .section {
   width: min(var(--max), calc(100% - 2rem));
   margin: 0 auto;
-  padding: clamp(4rem, 8vw, 6.5rem) 0;
+  padding: clamp(2.75rem, 5vw, 4.25rem) 0;
   scroll-margin-top: 90px;
 }
 
@@ -704,6 +704,13 @@ h1 .accent {
   color: var(--paper-soft);
   border-top: 1px solid var(--ink-soft);
   border-bottom: 1px solid var(--ink-soft);
+}
+
+.section.dark,
+.section.band,
+.section.contact-section {
+  padding-top: clamp(3.25rem, 6vw, 5rem);
+  padding-bottom: clamp(3.25rem, 6vw, 5rem);
 }
 
 .section-heading {
@@ -884,7 +891,7 @@ h1 .accent {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
   gap: 1.5rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .lead-panel,
@@ -903,6 +910,10 @@ h1 .accent {
 .lead-panel {
   padding: clamp(1.5rem, 3vw, 2.4rem);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 
 .lead-panel::before {
@@ -1388,10 +1399,6 @@ h1 .accent {
 /* =========================================================
    Contact
    ========================================================= */
-
-.contact-section {
-  padding-top: clamp(3rem, 7vw, 5.5rem);
-}
 
 .contact-panel {
   max-width: 900px;
