@@ -1,5 +1,15 @@
 <!doctype html>
 <html lang="en">
+<!-- ====== ARTICLE TEMPLATE ======
+     This is a blog post page. It reuses the same header/nav/footer as
+     index.html and its own article content.
+     To create a new post:
+       1. Copy this file to posts/your-slug.html.
+       2. Update <title>, <meta description>, and canonical/og/twitter URLs.
+       3. Rewrite the <h1> and everything inside .article-body.
+       4. Add a card link in index.html section id="insights".
+       5. Add the page to sitemap.xml.
+     Styling for .article-* lives in assets/css/site.css ("Article pages"). -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,14 +21,34 @@
   <meta property="og:description" content="Medical imaging AI depends on data structure, preprocessing, evaluation, and clinical meaning as much as architecture choice.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://narimannr2x.github.io/posts/computer-vision-medical-imaging.html">
-  <meta property="og:image" content="https://narimannr2x.github.io/website_pic-min.JPG">
+  <meta property="og:image" content="https://narimannr2x.github.io/assets/images/social-card-1200x630.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Medical Imaging AI Beyond the Model">
   <meta name="twitter:description" content="Medical imaging AI depends on data structure, preprocessing, evaluation, and clinical meaning as much as architecture choice.">
-  <meta name="twitter:image" content="https://narimannr2x.github.io/website_pic-min.JPG">
+  <meta name="twitter:image" content="https://narimannr2x.github.io/assets/images/social-card-1200x630.png">
   <link rel="icon" type="image/png" href="../doctor-svgrepo-com.png">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,760;9..144,900&family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/site.css">
   <script src="../assets/js/main.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Medical imaging AI beyond the model",
+    "description": "A short note by Nariman Naderi on medical imaging AI, segmentation workflows, data structure, preprocessing, evaluation, and clinical meaning.",
+    "datePublished": "2026-05-28",
+    "dateModified": "2026-08-06",
+    "author": {
+      "@type": "Person",
+      "name": "Nariman Naderi"
+    },
+    "url": "https://narimannr2x.github.io/posts/computer-vision-medical-imaging.html",
+    "image": "https://narimannr2x.github.io/assets/images/social-card-1200x630.png"
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -56,8 +86,9 @@
       <header class="article-header">
         <p class="article-kicker">Computer vision</p>
         <h1>Medical imaging AI beyond the model</h1>
+        <p class="article-byline">By <a href="../#about">Nariman Naderi</a> · Physician researcher</p>
         <div class="article-meta">
-          <time datetime="2026-05-28">Updated May 28, 2026</time>
+          <time datetime="2026-08-06">Updated August 6, 2026</time>
           <span>Segmentation</span>
           <span>Imaging workflows</span>
         </div>
@@ -72,6 +103,9 @@
         <p>
           Imaging datasets carry many hidden choices: acquisition protocol, anatomy coverage, annotation style, file format, preprocessing, exclusion criteria, and quality control. These choices shape what a model can learn and how honest the evaluation will be.
         </p>
+        <p>
+          Our critical review of public abdominal CT datasets showed how redundancy, geographic skew, bias, and weak clinical relevance can limit real-world applicability.<sup class="citation"><a href="https://arxiv.org/abs/2508.13626" target="_blank" rel="noreferrer" aria-label="Citation 1: abdominal CT dataset review">[1]</a></sup>
+        </p>
         <ul>
           <li>Image and mask alignment must be verified before metric reporting means anything.</li>
           <li>Preprocessing should be documented enough for another person to reproduce the pipeline.</li>
@@ -83,6 +117,9 @@
           Dice, IoU, sensitivity, and visual overlays are useful, but they do not automatically explain whether a result matters clinically. A segmentation workflow should connect metrics with case-level review, failure examples, and the likely consequences of errors.
         </p>
         <p>
+          In colonoscopy imaging, our <em>Scientific Reports</em> benchmark compared trained models and vision-language models for polyp detection and classification, illustrating why evaluation must extend beyond architecture choice.<sup class="citation"><a href="https://doi.org/10.1038/s41598-025-29566-2" target="_blank" rel="noreferrer" aria-label="Citation 2: colonoscopy vision-language model study">[2]</a></sup>
+        </p>
+        <p>
           This is especially important in radiology-adjacent work, where the technical pipeline can look successful while the output still misses the clinical structure that makes the task meaningful.
         </p>
 
@@ -90,10 +127,22 @@
           A strong imaging AI project is not only a trained model. It is a reproducible workflow with transparent data handling, readable evaluation, and clear clinical boundaries.
         </p>
 
-        <h2>Why this is part of my direction</h2>
+        <h2>Practical takeaway</h2>
         <p>
-          My long-term focus is radiology AI and medical computer vision. The work that interests me most is the full pipeline: clinical question, dataset structure, preprocessing, model behavior, evaluation, and the practical limits of deployment.
+          An imaging AI result is credible only when the dataset, preprocessing, annotations, evaluation metrics, and case-level failures can be inspected. Model architecture is one component of that chain, not the whole project.
         </p>
+
+        <h2>Related research</h2>
+        <ul>
+          <li><a href="https://arxiv.org/abs/2508.13626" target="_blank" rel="noreferrer">[1] State of abdominal CT datasets: A critical review of bias, clinical relevance, and real-world applicability</a></li>
+          <li><a href="https://doi.org/10.1038/s41598-025-29566-2" target="_blank" rel="noreferrer">[2] Vision language models versus machine learning models performance on polyp detection and classification in colonoscopy images</a></li>
+        </ul>
+
+        <nav class="related-notes" aria-label="Related notes">
+          <h2>Related notes</h2>
+          <a href="rag-medical-guidelines.html">Making medical guidelines usable with RAG</a>
+          <a href="future-of-medical-ai.html">The practical future of medical AI</a>
+        </nav>
 
         <a class="button secondary article-back" href="../#insights">Back to insights</a>
       </div>
@@ -102,11 +151,11 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <p>(c) <span data-year></span> Nariman Naderi. Static GitHub Pages site.</p>
+      <p>© <span data-year>2026</span> Nariman Naderi · Physician researcher in medical AI</p>
       <div aria-label="Footer links">
-        <a href="https://www.linkedin.com/in/nariman-naderi/" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="https://x.com/NarimanMD" target="_blank" rel="noreferrer">X</a>
         <a href="mailto:narimannaderi.md@gmail.com">Email</a>
+        <a href="https://scholar.google.com/citations?user=RkGkOdwAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/nariman-naderi/" target="_blank" rel="noreferrer">LinkedIn</a>
       </div>
     </div>
   </footer>

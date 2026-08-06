@@ -1,7 +1,22 @@
+/* =========================================================
+   MAIN.JS — all page behavior lives here, in one file.
+   It finds elements by data-* attributes set in index.html:
+
+     1. Mobile nav open/close        data-nav-toggle / data-nav-menu
+     2. Auto-current-year in footer  data-year
+     3. Scroll progress bar + rail   data-scroll-bar / data-scroll-scale
+     4. Fade-in sections             class="reveal"
+     5. Count-up stats               data-count="N"
+
+   Respects the OS "reduce motion" setting (skips animations).
+   To change a behavior, look up the matching data-* block below.
+   ========================================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.querySelector("[data-nav-toggle]");
   const navMenu = document.querySelector("[data-nav-menu]");
   const year = document.querySelector("[data-year]");
+  const navLabel = navToggle?.querySelector(".sr-only");
 
   if (year) {
     year.textContent = new Date().getFullYear();
@@ -12,11 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeMenu = () => {
       navToggle.setAttribute("aria-expanded", "false");
       navMenu.classList.remove("is-open");
+      if (navLabel) navLabel.textContent = "Open navigation";
     };
 
     const openMenu = () => {
       navToggle.setAttribute("aria-expanded", "true");
       navMenu.classList.add("is-open");
+      if (navLabel) navLabel.textContent = "Close navigation";
     };
 
     navToggle.addEventListener("click", () => {
@@ -75,23 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---------- Calibration curve draw ---------- */
-  const calCurve = document.querySelector("[data-cal-curve]");
-  const calPoints = document.querySelectorAll("[data-cal-point]");
-
-  if (calCurve && !reduceMotion) {
-    const draw = () => {
-      calCurve.classList.add("is-drawn");
-      calPoints.forEach((p, i) => {
-        setTimeout(() => p.classList.add("is-drawn"), 600 + i * 180);
-      });
-    };
-    setTimeout(draw, 500);
-  } else if (calCurve) {
-    calCurve.classList.add("is-drawn");
-    calPoints.forEach((p) => p.classList.add("is-drawn"));
-  }
-
   /* ---------- IntersectionObserver reveals ---------- */
   const reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduceMotion) {
@@ -119,6 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           const el = entry.target;
+          el.textContent = "0";
           const target = parseInt(el.dataset.count, 10);
           const dur = 1200;
           const start = performance.now();
@@ -135,7 +136,41 @@ document.addEventListener("DOMContentLoaded", () => {
       { threshold: 0.5 }
     );
     counters.forEach((el) => cio.observe(el));
-  } else {
-    counters.forEach((el) => (el.textContent = el.dataset.count));
+  }
+
+  /* ---------- Active navigation state ---------- */
+  const navLinks = document.querySelectorAll(".nav-menu a");
+  const trackedSections = ["#about", "#research", "#publications", "#projects", "#insights", "#contact"]
+    .map((sel) => document.querySelector(sel))
+    .filter(Boolean);
+
+  if (navLinks.length && trackedSections.length && "IntersectionObserver" in window) {
+    const linksById = new Map(
+      Array.from(navLinks).map((link) => [link.getAttribute("href").slice(1), link])
+    );
+
+    const setActive = (sectionId) => {
+      navLinks.forEach((link) => {
+        const isActive = link.getAttribute("href") === `#${sectionId}`;
+        link.classList.toggle("is-active", isActive);
+        if (isActive) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    };
+
+    const navIo = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && linksById.has(entry.target.id)) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -45% 0px", threshold: 0 }
+    );
+    trackedSections.forEach((section) => navIo.observe(section));
   }
 });

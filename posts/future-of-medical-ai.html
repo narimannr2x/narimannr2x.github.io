@@ -1,5 +1,15 @@
 <!doctype html>
 <html lang="en">
+<!-- ====== ARTICLE TEMPLATE ======
+     This is a blog post page. It reuses the same header/nav/footer as
+     index.html and its own article content.
+     To create a new post:
+       1. Copy this file to posts/your-slug.html.
+       2. Update <title>, <meta description>, and canonical/og/twitter URLs.
+       3. Rewrite the <h1> and everything inside .article-body.
+       4. Add a card link in index.html section id="insights".
+       5. Add the page to sitemap.xml.
+     Styling for .article-* lives in assets/css/site.css ("Article pages"). -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,14 +21,34 @@
   <meta property="og:description" content="Medical AI has to survive clinical workflows, evaluation, uncertainty, and trust, not only benchmarks.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://narimannr2x.github.io/posts/future-of-medical-ai.html">
-  <meta property="og:image" content="https://narimannr2x.github.io/website_pic-min.JPG">
+  <meta property="og:image" content="https://narimannr2x.github.io/assets/images/social-card-1200x630.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Practical Future of Medical AI">
   <meta name="twitter:description" content="Medical AI has to survive clinical workflows, evaluation, uncertainty, and trust, not only benchmarks.">
-  <meta name="twitter:image" content="https://narimannr2x.github.io/website_pic-min.JPG">
+  <meta name="twitter:image" content="https://narimannr2x.github.io/assets/images/social-card-1200x630.png">
   <link rel="icon" type="image/png" href="../doctor-svgrepo-com.png">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,760;9..144,900&family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/site.css">
   <script src="../assets/js/main.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "The practical future of medical AI",
+    "description": "A short note by Nariman Naderi on medical AI as a workflow, evaluation, and trust problem.",
+    "datePublished": "2026-05-28",
+    "dateModified": "2026-08-06",
+    "author": {
+      "@type": "Person",
+      "name": "Nariman Naderi"
+    },
+    "url": "https://narimannr2x.github.io/posts/future-of-medical-ai.html",
+    "image": "https://narimannr2x.github.io/assets/images/social-card-1200x630.png"
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -56,8 +86,9 @@
       <header class="article-header">
         <p class="article-kicker">Medical AI</p>
         <h1>The practical future of medical AI</h1>
+        <p class="article-byline">By <a href="../#about">Nariman Naderi</a> · Physician researcher</p>
         <div class="article-meta">
-          <time datetime="2026-05-28">Updated May 28, 2026</time>
+          <time datetime="2026-08-06">Updated August 6, 2026</time>
           <span>Clinical workflow</span>
           <span>AI evaluation</span>
         </div>
@@ -72,11 +103,17 @@
         <p>
           Accuracy matters, but clinical usefulness requires a wider frame. A system can be accurate in a dataset and still fail if the input distribution changes, if the output is not actionable, or if clinicians cannot tell when the model is uncertain.
         </p>
+        <p>
+          That distinction appears directly in my research: across 48 paired model entries on 300 gastroenterology questions, higher-performing models still reported poorly calibrated confidence,<sup class="citation"><a href="https://doi.org/10.1038/s44355-026-00053-3" target="_blank" rel="noreferrer" aria-label="Citation 1: LLM self-confidence study">[1]</a></sup> while a separate 156-configuration prompt study found that some accuracy gains came with increased overconfidence.<sup class="citation"><a href="https://doi.org/10.1007/978-3-032-01399-6_5" target="_blank" rel="noreferrer" aria-label="Citation 2: medical LLM prompt-engineering study">[2]</a></sup>
+        </p>
         <ul>
           <li>Medical AI should be evaluated for failure modes, calibration, and clinical relevance.</li>
           <li>Outputs should match real decisions, not only labels that are easy to benchmark.</li>
           <li>Systems should make it easier to audit where an answer came from and why it may be wrong.</li>
         </ul>
+        <p>
+          A broader review of uncertainty quantification in medical LLMs shows why calibration, probabilistic modeling, explainability, and responsible evaluation must be considered together.<sup class="citation"><a href="https://arxiv.org/abs/2504.05278" target="_blank" rel="noreferrer" aria-label="Citation 3: medical LLM uncertainty review">[3]</a></sup>
+        </p>
 
         <h2>The connector role matters</h2>
         <p>
@@ -85,15 +122,32 @@
         <p>
           This is where I see my strongest role: understanding the clinical problem, framing it as a research question, building or evaluating the technical workflow, and staying honest about what would happen in real use.
         </p>
+        <p>
+          Our guideline-synthesis study provides one example of this connector role: clinical evidence conflict was translated into a source-grounded, auditable retrieval workflow.<sup class="citation"><a href="https://doi.org/10.1111/codi.70436" target="_blank" rel="noreferrer" aria-label="Citation 4: IBD guideline RAG study">[4]</a></sup>
+        </p>
 
         <p class="article-note">
           The most interesting medical AI problems are not only model problems. They are evidence, workflow, reliability, and implementation problems.
         </p>
 
-        <h2>What I want to build toward</h2>
+        <h2>Practical takeaway</h2>
         <p>
-          My long-term direction is radiology AI and medical computer vision, but the broader goal is practical clinical AI: systems that can be studied rigorously, explained clearly, and used responsibly. That means treating evaluation and workflow design as central parts of the technical work.
+          Medical AI should be evaluated as a clinical workflow, not only as a model. A credible project must specify the intended user, the decision being supported, the failure boundary, the audit trail, and what happens when the system is uncertain.
         </p>
+
+        <h2>Related research</h2>
+        <ul>
+          <li><a href="https://doi.org/10.1038/s44355-026-00053-3" target="_blank" rel="noreferrer">[1] Large language models poorly report self-confidence in gastroenterology clinical reasoning tasks</a></li>
+          <li><a href="https://doi.org/10.1007/978-3-032-01399-6_5" target="_blank" rel="noreferrer">[2] Evaluating prompt engineering techniques for accuracy and confidence elicitation in medical LLMs</a></li>
+          <li><a href="https://arxiv.org/abs/2504.05278" target="_blank" rel="noreferrer">[3] The challenge of uncertainty quantification of large language models in medicine</a></li>
+          <li><a href="https://doi.org/10.1111/codi.70436" target="_blank" rel="noreferrer">[4] Using large language models to integrate international IBD guidelines</a></li>
+        </ul>
+
+        <nav class="related-notes" aria-label="Related notes">
+          <h2>Related notes</h2>
+          <a href="rag-medical-guidelines.html">Making medical guidelines usable with RAG</a>
+          <a href="computer-vision-medical-imaging.html">Medical imaging AI beyond the model</a>
+        </nav>
 
         <a class="button secondary article-back" href="../#insights">Back to insights</a>
       </div>
@@ -102,11 +156,11 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <p>(c) <span data-year></span> Nariman Naderi. Static GitHub Pages site.</p>
+      <p>© <span data-year>2026</span> Nariman Naderi · Physician researcher in medical AI</p>
       <div aria-label="Footer links">
-        <a href="https://www.linkedin.com/in/nariman-naderi/" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="https://x.com/NarimanMD" target="_blank" rel="noreferrer">X</a>
         <a href="mailto:narimannaderi.md@gmail.com">Email</a>
+        <a href="https://scholar.google.com/citations?user=RkGkOdwAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/nariman-naderi/" target="_blank" rel="noreferrer">LinkedIn</a>
       </div>
     </div>
   </footer>
