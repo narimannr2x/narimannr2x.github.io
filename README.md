@@ -2,7 +2,7 @@
 
 This folder is now a static GitHub Pages site. It does not require Jekyll, Ruby, npm, or a build step.
 
-> **Confused about what does what? Read [`SITE-MAP.md`](SITE-MAP.md)** — it maps every file and shows where to edit each thing.
+> **Source of truth for editing:** `index.html`, `assets/css/site.css`, `assets/js/main.js`, and image assets in the root folder.
 
 ## Source Of Truth
 

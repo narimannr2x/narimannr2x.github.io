@@ -1,3 +1,8 @@
 .DS_Store
 *.swp
 ~*
+
+# Local working docs and source assets (not part of the deployed site)
+SITE-MAP.md
+plan.md
+website_pic.JPG
