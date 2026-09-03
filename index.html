@@ -1,49 +1,42 @@
 <!doctype html>
 <html lang="en">
 <!-- =========================================================
-     INDEX.HTML — the whole one-page site. Sections, top to bottom:
+     INDEX.HTML — shorter personal site. Sections, top to bottom:
        1. <head>                 SEO / social tags, fonts, CSS, JS
        2. header.site-header     sticky top bar (brand + nav + hamburger)
-       3. section.hero           big name + the professional snapshot viewer
-       4. section#about          bio text + portrait
-       5. div.divider            decorative ECG "field notes" line
-       6. section#research       4 research-theme cards + animated stats
-       7. section#publications   publication list with DOI links
-       8. section#projects       dark "builder evidence" cards
-       9. div.divider            decorative ECG "short notes" line
-      10. section#insights       cards linking to posts/*.html
-      11. section#contact        contact panel + social buttons
-      12. footer.site-footer     bottom bar
+       3. section.hero           name + portrait
+       4. section#about          bio text + visual placeholder
+       5. section#publications   compact paper rows
+       6. section#contact        contact panel + social buttons
+       7. footer.site-footer     bottom bar
 
-     EDIT CONTENT HERE. Styling lives in assets/css/site.css,
+     Writing lives on blog.html. Article files stay in posts/.
+     Styling lives in assets/css/site.css,
      behavior (animations/nav) in assets/js/main.js.
      ========================================================= -->
 <head>
-  <!-- SEO + social (Facebook/Twitter) metadata — edit the descriptions here. -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nariman Naderi | Medical AI Researcher</title>
-  <meta name="description" content="Nariman Naderi is a physician researcher translating clinical questions into rigorous medical AI research and practical evaluation workflows.">
+  <title>Nariman Naderi | Physician Programmer · Medical AI Researcher</title>
+  <meta name="description" content="Nariman Naderi is a physician programmer and medical AI researcher working on gastroenterology, clinical large language models, and imaging evaluation.">
   <meta name="author" content="Nariman Naderi">
   <link rel="canonical" href="https://narimannr2x.github.io/">
-  <meta property="og:title" content="Nariman Naderi | Medical AI Researcher">
-  <meta property="og:description" content="Physician researcher working on medical LLM reliability, clinical guideline synthesis, and medical imaging under real healthcare constraints.">
+  <meta property="og:title" content="Nariman Naderi | Physician Programmer · Medical AI Researcher">
+  <meta property="og:description" content="Physician programmer and medical AI researcher. Medicine gave me the questions. Code gave me another way to answer them.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://narimannr2x.github.io/">
   <meta property="og:image" content="https://narimannr2x.github.io/assets/images/social-card-1200x630.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Nariman Naderi | Medical AI Researcher">
-  <meta name="twitter:description" content="Physician researcher working on medical LLM reliability, clinical guideline synthesis, and medical imaging under real healthcare constraints.">
+  <meta name="twitter:title" content="Nariman Naderi | Physician Programmer · Medical AI Researcher">
+  <meta name="twitter:description" content="Physician programmer and medical AI researcher. Medicine gave me the questions. Code gave me another way to answer them.">
   <meta name="twitter:image" content="https://narimannr2x.github.io/assets/images/social-card-1200x630.png">
   <link rel="icon" type="image/png" href="doctor-svgrepo-com.png">
   <script>document.documentElement.classList.add('js');</script>
-  <!-- site.css = ALL styling · main.js = ALL interactivity (nav, scroll bar, animations) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,760;9..144,900&family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=20260806">
-  <script src="assets/js/main.js?v=20260806" defer></script>
-  <!-- Structured data for Google (schema.org "Person"). Changes here affect Google rich results. -->
+  <link rel="stylesheet" href="assets/css/site.css?v=20260904">
+  <script src="assets/js/main.js?v=20260904" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -51,7 +44,7 @@
     "name": "Nariman Naderi",
     "url": "https://narimannr2x.github.io/",
     "image": "https://narimannr2x.github.io/website_pic-1100.webp",
-    "jobTitle": "Physician Researcher",
+    "jobTitle": "Physician Programmer",
     "affiliation": {
       "@type": "Organization",
       "name": "Gastroenterology and Liver Research Center, Taleghani Hospital"
@@ -60,7 +53,7 @@
       "@type": "CollegeOrUniversity",
       "name": "Shahid Beheshti University of Medical Sciences"
     },
-    "description": "Nariman Naderi is a physician researcher translating clinical questions into rigorous medical AI research and practical evaluation workflows.",
+    "description": "Nariman Naderi is a physician programmer and medical AI researcher working on gastroenterology, clinical large language models, and imaging evaluation.",
     "sameAs": [
       "https://orcid.org/0000-0003-4820-5497",
       "https://github.com/narimannr2x",
@@ -82,18 +75,16 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Scroll progress: thin bar on top + tiny marker on right rail, both filled by JS. -->
   <div class="scroll-rail" aria-hidden="true"><div class="scroll-bar" data-scroll-bar></div></div>
   <div class="scroll-scale" aria-hidden="true" data-scroll-scale></div>
 
-  <!-- ====== STICKY TOP BAR ====== -->
   <header class="site-header">
     <nav class="nav" aria-label="Primary navigation">
       <a class="brand" href="#top" aria-label="Nariman Naderi home">
-        <span class="brand-mark">NN</span>
+        <span class="brand-mark brand-mark--image"><img src="assets/images/doctor-logo.png" alt="Nariman Naderi logo" width="38" height="38"></span>
         <span>
           <strong>Nariman Naderi</strong>
-          <small>Medical AI Researcher</small>
+          <small>Physician Programmer</small>
         </span>
       </a>
 
@@ -104,337 +95,215 @@
         <span class="sr-only">Open navigation</span>
       </button>
 
-      <!-- NAV LINKS: each href="#id" must match a section id further down. Add/remove links here. -->
       <div class="nav-menu" id="nav-menu" data-nav-menu>
         <a href="#about">About</a>
-        <a href="#research">Research</a>
         <a href="#publications">Publications</a>
-        <a href="#projects">Projects</a>
-        <a href="#insights">Insights</a>
         <a href="#contact">Contact</a>
+        <a class="nav-blog" href="blog.html">Blog</a>
       </div>
     </nav>
   </header>
 
   <main id="main">
-    <!-- ====== SECTION 1: HERO = big name, intro text, + the medical-viewer professional snapshot ====== -->
     <section class="hero" id="top">
       <div class="hero-inner">
         <div class="hero-copy-block">
-          <p class="eyebrow">Physician Researcher · Practical Medical AI</p>
-          <h1>Nariman<br>Naderi<span class="accent">.</span></h1>
+          <h1>Nariman<br>Naderi</h1>
+          <p class="hero-role">Physician Programmer · Medical AI Researcher</p>
           <p class="hero-lede">
-            I translate <strong>clinical questions</strong> into rigorous medical AI research and practical evaluation workflows.
+            Medicine gave me the questions.<br>
+            Code gave me another way to answer them.
           </p>
-          <p class="hero-support">
-            Current work: medical LLM reliability, clinical guideline synthesis, and medical imaging—grounded in gastroenterology and real healthcare constraints.
-          </p>
-          <div class="hero-actions" aria-label="Primary actions">
-            <a class="button primary" href="#publications">View publications <span class="arrow">→</span></a>
-            <a class="button secondary" href="#projects">Explore projects</a>
-          </div>
+          <nav class="hero-links" aria-label="Primary links">
+            <a class="text-link" href="#publications">Publications</a>
+            <a class="text-link" href="#contact">Contact</a>
+            <a class="text-link" href="https://github.com/narimannr2x" target="_blank" rel="noreferrer">GitHub</a>
+          </nav>
         </div>
 
-        <!-- Right panel: dark "medical viewer" box showing the path from clinical work to practical systems. -->
-        <aside class="hero-viewer" aria-label="Professional snapshot">
-          <div class="viewer-bar">
-            <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
-            <span>CLINIC_TO_SYSTEM</span>
-            <span>CURRENT</span>
-          </div>
-          <div class="viewer-body">
-            <p class="viewer-title">Research workflow</p>
-            <p class="viewer-readout">
-              From a clinical question to a tested workflow with explicit failure boundaries.
-            </p>
-
-            <div class="signal-board">
-              <ol class="signal-flow" aria-label="Clinical problem to rigorous evaluation to practical system">
-                <li class="signal-step">
-                  <span class="signal-index">01</span>
-                  <strong>Clinical problem</strong>
-                  <small>Grounded in care</small>
-                </li>
-                <li class="signal-step">
-                  <span class="signal-index">02</span>
-                  <strong>Rigorous evaluation</strong>
-                  <small>Reliability first</small>
-                </li>
-                <li class="signal-step">
-                  <span class="signal-index">03</span>
-                  <strong>Practical system</strong>
-                  <small>Built for workflow</small>
-                </li>
-              </ol>
-            </div>
-
-            <dl class="snapshot-list">
-              <div>
-                <dt>01 / Clinical base</dt>
-                <dd>Gastroenterology &amp; Liver Research Center, Taleghani Hospital</dd>
-              </div>
-              <div>
-                <dt>02 / Research focus</dt>
-                <dd>LLM reliability · guideline synthesis · medical imaging</dd>
-              </div>
-              <div>
-                <dt>03 / Implementation</dt>
-                <dd>Python workflows · evaluation pipelines · local prototypes</dd>
-              </div>
-            </dl>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- ====== SECTION 2: ABOUT = bio text + portrait photo ====== -->
-    <section class="section" id="about">
-      <div class="section-heading reveal">
-        <p>About</p>
-        <h2>Clinical insight, rigorous evaluation, practical systems</h2>
-        <span>My role is to connect the clinical question with the research design, technical workflow, and failure analysis needed to evaluate a medical AI system responsibly.</span>
-      </div>
-      <div class="about-grid">
-        <article class="lead-panel reveal">
-          <p>
-            I am a <strong>physician researcher</strong> at the Gastroenterology and Liver Research Center, Taleghani Hospital. My work focuses on medical AI in gastroenterology and extends to clinical large language models, guideline synthesis, computer vision, and imaging-dataset evaluation.
-          </p>
-          <p>
-            I earned my MD from Shahid Beheshti University of Medical Sciences in 2025 and have worked on AI-in-medicine research since 2022, including two first-author studies on medical LLM reliability and prompt evaluation.
-          </p>
-          <p>
-            I am most interested in systems that are <strong>useful under clinical constraints</strong>: traceable enough to audit, rigorous enough to study, and practical enough to fit real healthcare workflows.
-          </p>
-          <div class="methods-line">
-            <span>Methods</span>
-            <span>Python · LLM evaluation · retrieval-augmented generation · medical imaging · data workflows · lightweight clinical tools</span>
-          </div>
-        </article>
-        <figure class="portrait reveal" aria-label="Nariman Naderi portrait">
+        <figure class="portrait hero-portrait portrait--cutout reveal" aria-label="Nariman Naderi portrait">
           <picture>
             <source srcset="website_pic-1100.webp" type="image/webp">
-            <img src="website_pic-min.JPG" alt="Nariman Naderi, physician researcher" width="1100" height="1100" loading="lazy" decoding="async">
+            <img src="website_pic-1100.png" alt="Nariman Naderi, physician programmer and medical AI researcher" width="1100" height="1375" decoding="async">
           </picture>
-          <figcaption>Physician researcher · Taleghani Hospital</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- Decorative divider: ECG-pulse line + label ("field notes"). Pure decoration. -->
-    <div class="divider reveal" aria-hidden="true">
-      <svg viewBox="0 0 90 22"><path d="M0 11 L20 11 L26 4 L32 18 L38 11 L60 11 L66 6 L72 16 L78 11 L90 11"/></svg>
-      <span>field notes</span>
-    </div>
-
-    <!-- ====== SECTION 3: RESEARCH = 4 theme cards + animated stat counters ====== -->
-    <section class="section band" id="research">
+    <section class="section" id="about">
       <div class="section-heading reveal">
-        <p>Research</p>
-        <h2>Current themes</h2>
-        <span>Four connected themes centered on reliability, evidence synthesis, medical imaging, and clinical relevance.</span>
+        <p>About</p>
+        <h2>I study where medical AI falls short</h2>
       </div>
-      <div class="theme-grid">
-        <article class="reveal" data-delay="1">
-          <span class="theme-number">01 / reliability</span>
-          <h3>LLM confidence and uncertainty</h3>
-          <p>Evaluating how medical large language models express confidence, uncertainty, and calibration in clinical reasoning tasks.</p>
-          <span class="theme-meta">Reliability / calibration</span>
+      <div class="about-grid">
+        <article class="lead-panel reveal">
+          <p>
+            I am a physician researcher at the Gastroenterology and Liver Research Center, Taleghani Hospital. My work focuses on medical AI in gastroenterology and extends to clinical large language models, guideline synthesis, computer vision, and imaging-dataset evaluation.
+          </p>
+          <p>
+            I earned my MD from Shahid Beheshti University of Medical Sciences in 2025 and have worked on AI-in-medicine research since 2022.
+          </p>
+          <p>
+            I have always been drawn to problems that refuse a quick answer, especially when solving them can lead to something useful.
+          </p>
         </article>
-        <article class="reveal" data-delay="2">
-          <span class="theme-number">02 / synthesis</span>
-          <h3>Clinical guideline RAG</h3>
-          <p>Using retrieval-augmented generation to synthesize overlapping or conflicting clinical guidelines into structured outputs.</p>
-          <span class="theme-meta">Guidelines / synthesis</span>
-        </article>
-        <article class="reveal" data-delay="3">
-          <span class="theme-number">03 / vision</span>
-          <h3>Vision-language models</h3>
-          <p>Studying when general-purpose vision-language models can compete with trained models in medical image tasks.</p>
-          <span class="theme-meta">Endoscopy / VLMs</span>
-        </article>
-        <article class="reveal" data-delay="4">
-          <span class="theme-number">04 / data</span>
-          <h3>Imaging dataset quality</h3>
-          <p>Assessing medical imaging datasets for clinical relevance, bias, redundancy, and real-world applicability.</p>
-          <span class="theme-meta">Dataset realism / bias</span>
-        </article>
-      </div>
-
-      <!-- Stats: the number in data-count="N" animates from 0 to N when scrolled into view. Change N + the label to update. -->
-      <div class="stats-strip reveal">
-        <div class="stat">
-          <div class="stat-num" data-count="9">9</div>
-          <div class="stat-label">Canonical scholarly works</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num" data-count="2">2</div>
-          <div class="stat-label">First-author publications</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num" data-count="4">4</div>
-          <div class="stat-label">Active research themes</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num" data-count="3">3</div>
-          <div class="stat-label">Domain clusters · GI · LLM · imaging</div>
+        <div class="about-visual working-notebook reveal" aria-label="A working notebook about questioning patterns and exceptions">
+          <p class="notebook-label">Question 09 / unresolved</p>
+          <div class="notebook-paper notebook-main">
+            <div class="notebook-mark">
+              <span>Question 09</span>
+              <span>Unresolved</span>
+            </div>
+            <p class="notebook-question">What if the case that does not fit is the one explaining the rest?</p>
+            <p class="notebook-line notebook-rejected">Treat the outlier as noise.</p>
+            <p class="notebook-line">Before removing an exception, ask which assumption made it exceptional.</p>
+          </div>
+          <div class="notebook-paper notebook-code">
+            <b>outlier</b> &ne; error<br>
+            <b>inspect</b> assumption first
+          </div>
+          <div class="notebook-paper notebook-next">
+            <strong>Note</strong>
+            Maybe the pattern is wrong, not the case.
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ====== SECTION 4: PUBLICATIONS = one <article> per paper; copy an <article> to add a new paper ====== -->
     <section class="section" id="publications">
-      <div class="section-heading split reveal">
-        <div>
-          <p>Publications</p>
-          <h2>Selected research outputs</h2>
-        </div>
-        <a class="text-link" href="https://scholar.google.com/citations?user=RkGkOdwAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar →</a>
+      <div class="section-heading reveal">
+        <p>Publications</p>
+        <h2>Papers</h2>
       </div>
       <div class="publication-list">
-        <article class="reveal">
-          <a class="publication-card-link" href="https://doi.org/10.1038/s44355-026-00053-3" target="_blank" rel="noreferrer">
-            <time datetime="2026">2026</time>
-            <div>
-              <span class="pub-kind">Peer-reviewed journal article · co-first author</span>
-              <h3>Across generations, sizes, and types, large language models poorly report self-confidence in gastroenterology clinical reasoning tasks.</h3>
-              <p>npj Gut and Liver · Co-first author.</p>
-              <span class="pub-doi">View DOI ↗</span>
-            </div>
-          </a>
+        <article class="pub-row reveal">
+          <time datetime="2025">2025</time>
+          <div class="pub-main">
+            <h3>The challenge of uncertainty quantification of large language models in medicine.</h3>
+            <p>arXiv</p>
+          </div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2504.05278" target="_blank" rel="noreferrer">Preprint</a>
+          </div>
         </article>
-        <article class="reveal" data-delay="1">
-          <a class="publication-card-link" href="https://doi.org/10.1111/codi.70436" target="_blank" rel="noreferrer">
-            <time datetime="2026">2026</time>
-            <div>
-              <span class="pub-kind">Peer-reviewed journal article · guideline RAG</span>
-              <h3>Using large language models to integrate international IBD guidelines: A retrieval-augmented generation approach.</h3>
-              <p>Colorectal Disease · Co-author.</p>
-              <span class="pub-doi">View DOI ↗</span>
-            </div>
-          </a>
+        <article class="pub-row reveal" data-delay="1">
+          <time datetime="2022">2022</time>
+          <div class="pub-main">
+            <h3>Epidemiology of COVID-19 in Tehran, Iran: a cohort study of clinical profile, risk factors, and outcomes.</h3>
+            <p>BioMed Research International</p>
+          </div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1155/2022/2350063" target="_blank" rel="noreferrer">Paper</a>
+          </div>
         </article>
-        <article class="reveal" data-delay="2">
-          <a class="publication-card-link" href="https://doi.org/10.1038/s41598-025-29566-2" target="_blank" rel="noreferrer">
-            <time datetime="2025">2025</time>
-            <div>
-              <span class="pub-kind">Peer-reviewed journal article · vision-language models</span>
-              <h3>Vision language models versus machine learning models performance on polyp detection and classification in colonoscopy images.</h3>
-              <p>Scientific Reports · Co-author.</p>
-              <span class="pub-doi">View DOI ↗</span>
-            </div>
-          </a>
+        <article class="pub-row reveal" data-delay="2">
+          <time datetime="2025">2025</time>
+          <div class="pub-main">
+            <h3>Vision language models versus machine learning models performance on polyp detection and classification in colonoscopy images.</h3>
+            <p>Scientific Reports</p>
+          </div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1038/s41598-025-29566-2" target="_blank" rel="noreferrer">Paper</a>
+          </div>
         </article>
-        <article class="reveal" data-delay="3">
-          <a class="publication-card-link" href="https://doi.org/10.1007/978-3-032-01399-6_5" target="_blank" rel="noreferrer">
-            <time datetime="2025">2025</time>
-            <div>
-              <span class="pub-kind">Conference paper · first author</span>
-              <h3>Evaluating prompt engineering techniques for accuracy and confidence elicitation in medical LLMs.</h3>
-              <p>EXTRAAMAS · Lecture Notes in Computer Science · First author.</p>
-              <span class="pub-doi">View DOI ↗</span>
-            </div>
-          </a>
+        <article class="pub-row reveal" data-delay="3">
+          <time datetime="2026">2026</time>
+          <div class="pub-main">
+            <h3>Across generations, sizes, and types, large language models poorly report self-confidence in gastroenterology clinical reasoning tasks.</h3>
+            <p>npj Gut and Liver · First author (equal contribution)</p>
+          </div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1038/s44355-026-00053-3" target="_blank" rel="noreferrer">Paper</a>
+            <a href="https://github.com/narimannr2x/confidence_scoring" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
         </article>
-        <article class="reveal" data-delay="4">
-          <a class="publication-card-link" href="https://arxiv.org/abs/2508.13626" target="_blank" rel="noreferrer">
-            <time datetime="2025">2025</time>
-            <div>
-              <span class="pub-kind">Preprint · dataset review</span>
-              <h3>State of abdominal CT datasets: A critical review of bias, clinical relevance, and real-world applicability.</h3>
-              <p>arXiv · Co-author.</p>
-              <span class="pub-doi">View arXiv ↗</span>
-            </div>
-          </a>
+        <article class="pub-row reveal" data-delay="4">
+          <time datetime="2025">2025</time>
+          <div class="pub-main">
+            <h3>Evaluating Prompt Engineering Techniques for Accuracy and Confidence Elicitation in Medical LLMs.</h3>
+            <p>EXTRAAMAS · Lecture Notes in Computer Science · First author</p>
+          </div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1007/978-3-032-01399-6_5" target="_blank" rel="noreferrer">Paper</a>
+            <a href="https://github.com/narimannr2x/Evaluating-Prompt-Engineering-Techniques-for-Accuracy-and-Confidence-Elicitation-in-Medical-LLMs" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
         </article>
+        <article class="pub-row reveal">
+          <time datetime="2026">2026</time>
+          <div class="pub-main">
+            <h3>State of abdominal CT datasets: A critical review of bias, clinical relevance, and real-world applicability.</h3>
+            <p>PLOS Digital Health</p>
+          </div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1371/journal.pdig.0001567" target="_blank" rel="noreferrer">Paper</a>
+          </div>
+        </article>
+        <article class="pub-row reveal">
+          <time datetime="2025">2025</time>
+          <div class="pub-main">
+            <h3>Alzheimer's Disease Stage Classification via Multimodal CNN on EEG Spectrograms and Cube-Drawing Images.</h3>
+            <p>medRxiv</p>
+          </div>
+          <div class="pub-links">
+            <a href="https://www.medrxiv.org/content/10.1101/2025.10.01.25336871v1" target="_blank" rel="noreferrer">Preprint</a>
+          </div>
+        </article>
+        <article class="pub-row reveal">
+          <time datetime="2026">2026</time>
+          <div class="pub-main">
+            <h3>Using large language models to integrate international IBD guidelines: A retrieval-augmented generation approach.</h3>
+            <p>Colorectal Disease</p>
+          </div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1111/codi.70436" target="_blank" rel="noreferrer">Paper</a>
+          </div>
+        </article>
+        <article class="pub-row reveal">
+          <time datetime="2026">2026</time>
+          <div class="pub-main">
+            <h3>Independent and Combined Association of Overweight and Obesity and Metabolic Dysfunction–Associated Steatotic Liver Disease (MASLD) with 10-Year Atherosclerotic Cardiovascular Disease Risk in Patients with Type 2 Diabetes.</h3>
+            <p>Iranian Journal of Nutrition Sciences and Food Technology · First author</p>
+          </div>
+          <div class="pub-links">
+            <a href="http://nsft.sbmu.ac.ir/article-1-4010-en.html" target="_blank" rel="noreferrer">Paper</a>
+          </div>
+        </article>
+        <article class="pub-row reveal">
+          <time datetime="2025">2025</time>
+          <div class="pub-main">
+            <h3>Association of Lifelines Diet Score (LLDS) with Risk of Pancreatic Steatosis: A Case-Control Study.</h3>
+            <p>Iranian Journal of Endocrinology and Metabolism · First author</p>
+          </div>
+          <div class="pub-links">
+            <a href="http://ijem.sbmu.ac.ir/article-1-3260-en.html" target="_blank" rel="noreferrer">Paper</a>
+          </div>
+        </article>
+        <article class="pub-row reveal">
+          <time datetime="2024">2024</time>
+          <div class="pub-main">
+            <h3>Assessing the effect of remdesivir alone and in combination with corticosteroids on time to death in COVID-19: A propensity score-matched analysis.</h3>
+            <p>Journal of Clinical Virology Plus</p>
+          </div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1016/j.jcvp.2024.100180" target="_blank" rel="noreferrer">Paper</a>
+          </div>
+        </article>
+      </div>
+      <div class="pub-footer reveal">
+        <input type="checkbox" id="pubs-show-all" class="pub-show-all">
+        <label for="pubs-show-all" class="text-link pub-show-all-label">
+          <span class="pub-show-more">View all publications</span>
+          <span class="pub-show-less">Show fewer publications</span>
+        </label>
+        <a class="text-link" href="https://scholar.google.com/citations?user=RkGkOdwAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar →</a>
       </div>
     </section>
 
-    <!-- ====== SECTION 5: PROJECTS = dark section, 2 selected project cards ====== -->
-    <section class="section dark" id="projects">
-      <div class="section-heading reveal">
-        <p>Projects</p>
-        <h2>Selected projects</h2>
-        <span>Two public research repositories connecting peer-reviewed medical AI studies with inspectable code, processed data, and evaluation workflows.</span>
-      </div>
-      <div class="project-grid">
-        <article class="reveal" data-delay="1">
-          <span>Open research code + data</span>
-          <h3>LLM confidence analysis repository</h3>
-          <p>Code, processed data, and analysis notebooks supporting the 2026 <em>npj Gut and Liver</em> study of self-reported confidence across 300 gastroenterology questions and 48 paired model entries.</p>
-          <dl class="project-details">
-            <div>
-              <dt>Role</dt>
-              <dd>First author · statistical analysis · manuscript development</dd>
-            </div>
-            <div>
-              <dt>Methods</dt>
-              <dd>Python notebooks · calibration · Brier score · ROC-AUC</dd>
-            </div>
-          </dl>
-          <p class="project-evidence">Public code, processed data, and citation metadata</p>
-          <a class="project-link" href="https://github.com/narimannr2x/confidence_scoring" target="_blank" rel="noreferrer">View code and data ↗</a>
-        </article>
-        <article class="reveal" data-delay="2">
-          <span>Open research code</span>
-          <h3>Medical LLM prompt-engineering study</h3>
-          <p>Code and prompt templates supporting the 2025 Springer study of 156 evaluated configurations across five models, three temperatures, multiple prompt strategies, and confidence formats.</p>
-          <dl class="project-details">
-            <div>
-              <dt>Role</dt>
-              <dd>First author · study implementation · evaluation</dd>
-            </div>
-            <div>
-              <dt>Methods</dt>
-              <dd>Batch APIs · structured outputs · prompting · calibration</dd>
-            </div>
-          </dl>
-          <p class="project-evidence">Public code, prompt templates, and citation metadata</p>
-          <a class="project-link" href="https://github.com/narimannr2x/Evaluating-Prompt-Engineering-Techniques-for-Accuracy-and-Confidence-Elicitation-in-Medical-LLMs" target="_blank" rel="noreferrer">View code and prompts ↗</a>
-        </article>
-      </div>
-    </section>
-
-    <!-- Decorative divider: ECG-pulse line + label ("short notes"). Pure decoration. -->
-    <div class="divider reveal" aria-hidden="true">
-      <svg viewBox="0 0 90 22"><path d="M0 11 L20 11 L26 4 L32 18 L38 11 L60 11 L66 6 L72 16 L78 11 L90 11"/></svg>
-      <span>short notes</span>
-    </div>
-
-    <!-- ====== SECTION 6: INSIGHTS = cards linking to the blog articles in posts/*.html ====== -->
-    <section class="section band" id="insights">
-      <div class="section-heading reveal">
-        <p>Insights</p>
-        <h2>Short notes on medical AI systems</h2>
-        <span>Brief field notes connecting research questions, implementation choices, and clinical constraints.</span>
-      </div>
-      <div class="insight-grid">
-        <a class="insight-card reveal" data-delay="1" href="posts/rag-medical-guidelines.html">
-          <span>Guideline RAG</span>
-          <h3>Making medical guidelines usable with RAG</h3>
-          <p>A short note on why retrieval alone is not enough: guideline systems need source tracing, conflict handling, and careful evaluation.</p>
-          <span class="card-arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="insight-card reveal" data-delay="2" href="posts/future-of-medical-ai.html">
-          <span>Medical AI</span>
-          <h3>The practical future of medical AI</h3>
-          <p>A grounded view of medical AI as a workflow, evaluation, and trust problem, not only a model-performance problem.</p>
-          <span class="card-arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="insight-card reveal" data-delay="3" href="posts/computer-vision-medical-imaging.html">
-          <span>Computer vision</span>
-          <h3>Medical imaging AI beyond the model</h3>
-          <p>Why segmentation work depends on data structure, preprocessing, evaluation, and clinical meaning as much as architecture choice.</p>
-          <span class="card-arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- ====== SECTION 7: CONTACT = panel with buttons + social links (edit URLs/email here) ====== -->
     <section class="section contact-section" id="contact">
       <div class="contact-panel reveal">
         <p>Contact</p>
-        <h2>Research collaboration in medical AI</h2>
-        <span>I welcome collaboration on medical LLM evaluation, clinical guideline synthesis, and medical imaging research. Email is the best way to start.</span>
+        <h2>Interested in working together?</h2>
+        <span>I welcome collaborations on medical LLM evaluation, clinical guideline synthesis, and medical imaging. If you have a specific research question, dataset, or study idea, email me.</span>
         <div class="hero-actions">
           <a class="button primary" href="mailto:narimannaderi.md@gmail.com">Email me <span class="arrow">→</span></a>
           <a class="button secondary" href="https://scholar.google.com/citations?user=RkGkOdwAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
@@ -449,16 +318,9 @@
     </section>
   </main>
 
-  <!-- Footer. The year is filled in automatically by main.js (data-year). -->
   <footer class="site-footer">
-    <div class="footer-inner">
-      <p>© <span data-year>2026</span> Nariman Naderi · Physician researcher in medical AI</p>
-      <div aria-label="Footer links">
-        <a href="mailto:narimannaderi.md@gmail.com">Email</a>
-        <a href="https://scholar.google.com/citations?user=RkGkOdwAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
-        <a href="https://orcid.org/0000-0003-4820-5497" target="_blank" rel="noreferrer">ORCID</a>
-        <a href="https://www.linkedin.com/in/nariman-naderi/" target="_blank" rel="noreferrer">LinkedIn</a>
-      </div>
+    <div class="footer-inner footer-plain">
+      <p>© <span data-year>2026</span> Nariman Naderi · Physician Programmer</p>
     </div>
   </footer>
 </body>

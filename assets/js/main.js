@@ -140,13 +140,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ---------- Active navigation state ---------- */
   const navLinks = document.querySelectorAll(".nav-menu a");
-  const trackedSections = ["#about", "#research", "#publications", "#projects", "#insights", "#contact"]
+  const pagePath = window.location.pathname.split("/").pop() || "index.html";
+  const onBlog = pagePath === "blog.html";
+
+  if (onBlog) {
+    navLinks.forEach((link) => {
+      const href = link.getAttribute("href") || "";
+      const isBlog = href.endsWith("blog.html");
+      link.classList.toggle("is-active", isBlog);
+      if (isBlog) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  const trackedSections = ["#about", "#publications", "#contact"]
     .map((sel) => document.querySelector(sel))
     .filter(Boolean);
 
-  if (navLinks.length && trackedSections.length && "IntersectionObserver" in window) {
+  if (!onBlog && navLinks.length && trackedSections.length && "IntersectionObserver" in window) {
     const linksById = new Map(
-      Array.from(navLinks).map((link) => [link.getAttribute("href").slice(1), link])
+      Array.from(navLinks)
+        .filter((link) => (link.getAttribute("href") || "").startsWith("#"))
+        .map((link) => [link.getAttribute("href").slice(1), link])
     );
 
     const setActive = (sectionId) => {

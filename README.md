@@ -4,11 +4,14 @@ This folder is now a static GitHub Pages site. It does not require Jekyll, Ruby,
 
 > **Source of truth for editing:** `index.html`, `assets/css/site.css`, `assets/js/main.js`, and image assets in the root folder.
 
+`v1.1/` is a staging copy of a redesigned homepage (thesis hero, trajectory viewer, tabbed Evidence section). It is `noindex` and is not the live GitHub Pages site. See `v1.1/README.md`.
+
 ## Source Of Truth
 
 Edit these files:
 
 - `index.html`
+- `blog.html`
 - `assets/css/site.css`
 - `assets/js/main.js`
 - image assets in this root folder
@@ -17,22 +20,22 @@ The `.nojekyll` file tells GitHub Pages to serve the files directly instead of p
 
 ## Homepage structure
 
-The homepage is a single page with seven sections, top to bottom:
+The homepage is a single page with four sections, top to bottom:
 
-1. **Hero** — name, identity, and the clinical-question-to-system viewer workflow
-2. **About** — biography and portrait
-3. **Research** — four research themes and stat counters
-4. **Publications** — five selected research outputs
-5. **Projects** — two public research-code repositories with inspectable evidence links
-6. **Insights** — three article cards
-7. **Contact** — email, Google Scholar, ORCID, and social links
+1. **Hero** — name, identity, and portrait
+2. **About** — biography and a placeholder visual
+3. **Publications** — papers ranked by Google Scholar citations; 5 on small screens, 10 on larger screens, with an in-page “View all publications” control and a Google Scholar link
+4. **Contact** — email, Google Scholar, ORCID, and social links
+
+Writing lives on `blog.html`. Article files and URLs in `posts/` are unchanged.
 
 ## Behavior notes
 
 - `class="reveal"` content is visible without JavaScript. The `<head>` script adds a `js` class to `<html>`, which gates the fade/slide-in animation; the stat numbers shown in the HTML are the final values (JavaScript animates from zero only when JavaScript is on).
 - The navigation highlights the section currently in view with an active state.
-- Publication cards and insight cards are full-card links.
-- Project cards link to the public code/data companions for the two first-author medical-LLM studies.
+- Publication rows keep separate paper and GitHub links.
+- The homepage publications list is ordered by Google Scholar citation count (checked 2026-09-03). CSS shows 5 rows below 860px and 10 rows at larger widths; “View all publications” reveals the rest.
+- The Blog page lists the three existing articles. Its page heading is an `h1`.
 - Article claims use numbered inline DOI/arXiv citations and retain a complete Related research list.
 - The mobile menu button's accessible label switches between `Open navigation` and `Close navigation`.
 - Reduced-motion and print styles keep all reveal content visible.
