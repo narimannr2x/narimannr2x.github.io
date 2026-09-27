@@ -31,7 +31,7 @@ Writing lives on `blog.html`. Article files and URLs in `posts/` are unchanged.
 
 ## Behavior notes
 
-- `class="reveal"` content is visible without JavaScript. The `<head>` script adds a `js` class to `<html>`, which gates the fade/slide-in animation; the stat numbers shown in the HTML are the final values (JavaScript animates from zero only when JavaScript is on).
+- `class="reveal"` content is visible without JavaScript. The `<head>` script adds a `js` class to `<html>`, which gates the fade/slide-in animation.
 - The navigation highlights the section currently in view with an active state.
 - Publication rows keep separate paper and GitHub links.
 - The homepage publications list is ordered by Google Scholar citation count (checked 2026-09-03). CSS shows 5 rows below 860px and 10 rows at larger widths; “View all publications” reveals the rest.

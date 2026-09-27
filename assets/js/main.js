@@ -6,7 +6,9 @@
      2. Auto-current-year in footer  data-year
      3. Scroll progress bar + rail   data-scroll-bar / data-scroll-scale
      4. Fade-in sections             class="reveal"
-     5. Count-up stats               data-count="N"
+     5. Clinician / engineer lens    data-lens-set
+     6. Console greeting             (DevTools only)
+     7. Pinned story timeline        data-story
 
    Respects the OS "reduce motion" setting (skips animations).
    To change a behavior, look up the matching data-* block below.
@@ -59,6 +61,161 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------- Clinician / engineer lens ---------- */
+  const lensButtons = document.querySelectorAll("[data-lens-set]");
+  const applyLens = (lens) => {
+    if (lens === "engineer") {
+      document.documentElement.dataset.lens = "engineer";
+    } else {
+      delete document.documentElement.dataset.lens;
+    }
+    lensButtons.forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.lensSet === lens));
+    });
+    try { localStorage.setItem("lens", lens); } catch (e) { /* storage blocked */ }
+  };
+
+  lensButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const lens = button.dataset.lensSet;
+      const current = document.documentElement.dataset.lens || "clinician";
+      if (lens === current) return;
+      if (document.startViewTransition && !reduceMotion) {
+        document.startViewTransition(() => applyLens(lens));
+      } else {
+        applyLens(lens);
+      }
+    });
+  });
+
+  if (lensButtons.length) {
+    applyLens(document.documentElement.dataset.lens || "clinician");
+  }
+
+  /* ---------- Console note for curious readers ---------- */
+  console.log(
+    "%cNN%c  You opened the console. You're my kind of reader.\n\n" +
+      "Code:  https://github.com/narimannr2x\n" +
+      "Email: narimannaderi.md@gmail.com",
+    "background:#0b1620;color:#f1f4ee;font:700 14px Georgia,serif;padding:4px 8px;border-bottom:2px solid #d98a2b;",
+    "color:#0f6c78;font:500 12px ui-monospace,monospace;"
+  );
+
+  /* ---------- Story: pinned scroll timeline ---------- */
+  const story = document.querySelector("[data-story]");
+  let updateStory = () => {};
+
+  if (story) {
+    const pin = story.querySelector(".story-pin");
+    const chapters = Array.from(story.querySelectorAll(".story-chapter"));
+    const navButtons = Array.from(story.querySelectorAll("[data-story-go]"));
+    const indexEl = story.querySelector("[data-story-index]");
+    const totalEl = story.querySelector("[data-story-total]");
+    const codeText = story.querySelector("[data-scrub-offset]");
+    const codeIndex = codeText ? chapters.indexOf(codeText.closest(".story-chapter")) : -1;
+    const hrEl = story.querySelector("[data-hr]");
+    const total = chapters.length;
+    const pad = (n) => String(n).padStart(2, "0");
+    const clamp01 = (v) => Math.min(Math.max(v, 0), 1);
+    const pinQuery = window.matchMedia(
+      "(min-height: 520px) and (prefers-reduced-motion: no-preference)"
+    );
+    let active = -1;
+
+    story.style.setProperty("--story-steps", total);
+    if (totalEl) totalEl.textContent = pad(total);
+
+    // SVG startOffset is an attribute, not a CSS property, so the code
+    // riding the heartbeat line is scrubbed here instead of in site.css.
+    const setCodeOffset = (cp) => {
+      if (!codeText) return;
+      const t = clamp01((cp - 0.25) / 0.6);
+      codeText.setAttribute("startOffset", `${(100 - t * 96).toFixed(2)}%`);
+    };
+
+    const setActive = (i) => {
+      if (i === active) return;
+      active = i;
+      chapters.forEach((chapter, n) => {
+        chapter.classList.toggle("is-active", n === i);
+        chapter.classList.toggle("is-past", n < i);
+      });
+      navButtons.forEach((button, n) => {
+        if (n === i) button.setAttribute("aria-current", "step");
+        else button.removeAttribute("aria-current");
+      });
+      if (indexEl) indexEl.textContent = pad(i + 1);
+    };
+
+    const travelInfo = () => {
+      const stickTop = parseFloat(getComputedStyle(pin).top) || 0;
+      return { stickTop, travel: story.offsetHeight - pin.offsetHeight };
+    };
+
+    updateStory = () => {
+      if (!story.classList.contains("is-pinned")) return;
+      const { stickTop, travel } = travelInfo();
+      const scrolled = stickTop - story.getBoundingClientRect().top;
+      const p = travel > 0 ? clamp01(scrolled / travel) : 0;
+      const f = p * total;
+      chapters.forEach((chapter, n) => {
+        const cp = clamp01(f - n).toFixed(3);
+        chapter.style.setProperty("--cp", cp);
+        navButtons[n]?.style.setProperty("--np", cp);
+      });
+      setCodeOffset(clamp01(f - codeIndex));
+      setActive(Math.min(total - 1, Math.floor(f)));
+    };
+
+    navButtons.forEach((button, n) => {
+      button.addEventListener("click", () => {
+        const { stickTop, travel } = travelInfo();
+        const storyTop = story.getBoundingClientRect().top + window.scrollY - stickTop;
+        window.scrollTo({ top: storyTop + ((n + 0.8) / total) * travel });
+      });
+    });
+
+    const setMode = () => {
+      story.classList.toggle("is-pinned", pinQuery.matches);
+      active = -1;
+      if (pinQuery.matches) {
+        updateStory();
+      } else {
+        chapters.forEach((chapter) => {
+          chapter.classList.remove("is-active", "is-past");
+          chapter.style.removeProperty("--cp");
+        });
+        setCodeOffset(1);
+      }
+    };
+
+    pinQuery.addEventListener("change", setMode);
+    window.addEventListener("resize", updateStory, { passive: true });
+    setMode();
+
+    if (pin && !reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+      pin.addEventListener("pointermove", (event) => {
+        const r = pin.getBoundingClientRect();
+        const x = (event.clientX - r.left) / r.width;
+        const y = (event.clientY - r.top) / r.height;
+        pin.style.setProperty("--mx", `${(x * 100).toFixed(1)}%`);
+        pin.style.setProperty("--my", `${(y * 100).toFixed(1)}%`);
+        pin.style.setProperty("--tx", ((x - 0.5) * 10).toFixed(2));
+        pin.style.setProperty("--ty", ((0.5 - y) * 7).toFixed(2));
+      });
+      pin.addEventListener("pointerleave", () => {
+        pin.style.setProperty("--tx", "0");
+        pin.style.setProperty("--ty", "0");
+      });
+    }
+
+    if (hrEl && !reduceMotion) {
+      setInterval(() => {
+        if (!document.hidden) hrEl.textContent = 70 + Math.round(Math.random() * 6);
+      }, 1500);
+    }
+  }
+
   /* ---------- Scroll progress bar + scale ---------- */
   const scrollBar = document.querySelector("[data-scroll-bar]");
   const scrollScale = document.querySelector("[data-scroll-scale]");
@@ -85,6 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const h = scrollScale.offsetHeight;
         scaleMarker.style.transform = `translateY(${pct * h}px)`;
       }
+      updateStory();
       ticking = false;
     });
   };
@@ -109,33 +267,6 @@ document.addEventListener("DOMContentLoaded", () => {
     reveals.forEach((el) => io.observe(el));
   } else {
     reveals.forEach((el) => el.classList.add("is-visible"));
-  }
-
-  /* ---------- Animated counters ---------- */
-  const counters = document.querySelectorAll("[data-count]");
-  if (counters.length && "IntersectionObserver" in window && !reduceMotion) {
-    const cio = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const el = entry.target;
-          el.textContent = "0";
-          const target = parseInt(el.dataset.count, 10);
-          const dur = 1200;
-          const start = performance.now();
-          const tick = (now) => {
-            const t = Math.min((now - start) / dur, 1);
-            const eased = 1 - Math.pow(1 - t, 3);
-            el.textContent = Math.round(eased * target);
-            if (t < 1) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick);
-          cio.unobserve(el);
-        });
-      },
-      { threshold: 0.5 }
-    );
-    counters.forEach((el) => cio.observe(el));
   }
 
   /* ---------- Active navigation state ---------- */

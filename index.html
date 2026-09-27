@@ -5,10 +5,16 @@
        1. <head>                 SEO / social tags, fonts, CSS, JS
        2. header.site-header     sticky top bar (brand + nav + hamburger)
        3. section.hero           name + portrait
-       4. section#about          bio text + visual placeholder
-       5. section#publications   compact paper rows
+       4. section#about          bio, chart card, stats strip
+       4b. section#story         dark scroll-pinned stage: one animated scene
+                                 per chapter, ending on "Currently"
+       5. section#publications   selected paper rows, strongest first
        6. section#contact        contact panel + social buttons
        7. footer.site-footer     bottom bar
+
+     Clinician / engineer lens: text with two readings sits in paired
+     .lens-clinician / .lens-engineer elements. The hero switch sets
+     <html data-lens="engineer">, which swaps the copy and the palette.
 
      Writing lives on blog.html. Article files stay in posts/.
      Styling lives in assets/css/site.css,
@@ -20,6 +26,7 @@
   <title>Nariman Naderi | Physician Programmer · Medical AI Researcher</title>
   <meta name="description" content="Nariman Naderi is a physician programmer and medical AI researcher working on gastroenterology, clinical large language models, and imaging evaluation.">
   <meta name="author" content="Nariman Naderi">
+  <meta name="robots" content="noindex">
   <link rel="canonical" href="https://narimannr2x.github.io/">
   <meta property="og:title" content="Nariman Naderi | Physician Programmer · Medical AI Researcher">
   <meta property="og:description" content="Physician programmer and medical AI researcher. Medicine gave me the questions. Code gave me another way to answer them.">
@@ -30,13 +37,15 @@
   <meta name="twitter:title" content="Nariman Naderi | Physician Programmer · Medical AI Researcher">
   <meta name="twitter:description" content="Physician programmer and medical AI researcher. Medicine gave me the questions. Code gave me another way to answer them.">
   <meta name="twitter:image" content="https://narimannr2x.github.io/assets/images/social-card-1200x630.png">
-  <link rel="icon" type="image/png" href="doctor-svgrepo-com.png">
-  <script>document.documentElement.classList.add('js');</script>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/favicon.png">
+  <script>document.documentElement.classList.add('js');try{if(localStorage.getItem('lens')==='engineer')document.documentElement.dataset.lens='engineer';}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,760;9..144,900&family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=20260904">
-  <script src="assets/js/main.js?v=20260904" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,760;9..144,900&family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css?v=20260927d">
+  <script src="assets/js/main.js?v=20260927d" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -81,7 +90,7 @@
   <header class="site-header">
     <nav class="nav" aria-label="Primary navigation">
       <a class="brand" href="#top" aria-label="Nariman Naderi home">
-        <span class="brand-mark brand-mark--image"><img src="assets/images/doctor-logo.png" alt="Nariman Naderi logo" width="38" height="38"></span>
+        <span class="brand-mark brand-mark--image" aria-hidden="true"><img src="assets/images/doctor-mark.png" alt="" width="128" height="128" decoding="async"></span>
         <span>
           <strong>Nariman Naderi</strong>
           <small>Physician Programmer</small>
@@ -109,119 +118,301 @@
       <div class="hero-inner">
         <div class="hero-copy-block">
           <h1>Nariman<br>Naderi</h1>
-          <p class="hero-role">Physician Programmer · Medical AI Researcher</p>
-          <p class="hero-lede">
-            Medicine gave me the questions.<br>
-            Code gave me another way to answer them.
+          <p class="hero-role">
+            <span class="lens-clinician">Physician Programmer · Gastroenterology AI Research</span>
+            <span class="lens-engineer">Python · LLM evaluation · Computer vision</span>
           </p>
-          <nav class="hero-links" aria-label="Primary links">
-            <a class="text-link" href="#publications">Publications</a>
-            <a class="text-link" href="#contact">Contact</a>
-            <a class="text-link" href="https://github.com/narimannr2x" target="_blank" rel="noreferrer">GitHub</a>
-          </nav>
+          <p class="hero-lede lens-clinician">
+            I trained as a physician.<br>
+            Now I test whether AI can be trusted at the bedside.
+          </p>
+          <p class="hero-lede lens-engineer">
+            I write the code behind my research.<br>
+            Then I find out where the models break.
+          </p>
+          <div class="lens-switch" role="group" aria-label="Read this page as">
+            <span class="lens-label">Read as</span>
+            <span class="lens-options">
+              <button type="button" data-lens-set="clinician" aria-pressed="true">Clinician</button>
+              <button type="button" data-lens-set="engineer" aria-pressed="false">Engineer</button>
+            </span>
+          </div>
         </div>
 
         <figure class="portrait hero-portrait portrait--cutout reveal" aria-label="Nariman Naderi portrait">
           <picture>
             <source srcset="website_pic-1100.webp" type="image/webp">
-            <img src="website_pic-1100.png" alt="Nariman Naderi, physician programmer and medical AI researcher" width="1100" height="1375" decoding="async">
+            <img src="website_pic-1100.png" alt="Nariman Naderi, physician programmer and medical AI researcher" width="1100" height="1375" decoding="async" fetchpriority="high">
           </picture>
         </figure>
       </div>
     </section>
 
-    <section class="section" id="about">
-      <div class="section-heading reveal">
-        <p>About</p>
-        <h2>I study where medical AI falls short</h2>
-      </div>
+    <section class="section about" id="about">
       <div class="about-grid">
-        <article class="lead-panel reveal">
-          <p>
-            I am a physician researcher at the Gastroenterology and Liver Research Center, Taleghani Hospital. My work focuses on medical AI in gastroenterology and extends to clinical large language models, guideline synthesis, computer vision, and imaging-dataset evaluation.
-          </p>
-          <p>
-            I earned my MD from Shahid Beheshti University of Medical Sciences in 2025 and have worked on AI-in-medicine research since 2022.
-          </p>
-          <p>
-            I have always been drawn to problems that refuse a quick answer, especially when solving them can lead to something useful.
-          </p>
-        </article>
-        <div class="about-visual working-notebook reveal" aria-label="A working notebook about questioning patterns and exceptions">
-          <p class="notebook-label">Question 09 / unresolved</p>
-          <div class="notebook-paper notebook-main">
-            <div class="notebook-mark">
-              <span>Question 09</span>
-              <span>Unresolved</span>
+        <div class="about-main">
+          <div class="section-heading reveal">
+            <p>About</p>
+            <h2 class="lens-clinician">I study where medical AI falls short</h2>
+            <h2 class="lens-engineer">I measure where models fail on clinical data</h2>
+          </div>
+          <div class="about-copy reveal" data-delay="1">
+            <div class="lens-clinician">
+              <p class="about-lede">I am a physician researcher at the Gastroenterology and Liver Research Center, Taleghani Hospital.</p>
+              <p>My questions come from clinical work. Can a language model tell a gastroenterologist when it is unsure? Can it reconcile IBD guidelines that disagree? Do the CT datasets we train on look like the patients we actually see?</p>
             </div>
-            <p class="notebook-question">What if the case that does not fit is the one explaining the rest?</p>
-            <p class="notebook-line notebook-rejected">Treat the outlier as noise.</p>
-            <p class="notebook-line">Before removing an exception, ask which assumption made it exceptional.</p>
+            <div class="lens-engineer">
+              <p class="about-lede">I write the code behind my own research, mostly in Python.</p>
+              <p>My work covers LLM evaluation and confidence elicitation, retrieval-augmented generation over clinical guidelines, zero-shot vision-language models benchmarked against trained ML models, and multimodal CNNs on EEG spectrograms.</p>
+            </div>
           </div>
-          <div class="notebook-paper notebook-code">
-            <b>outlier</b> &ne; error<br>
-            <b>inspect</b> assumption first
-          </div>
-          <div class="notebook-paper notebook-next">
-            <strong>Note</strong>
-            Maybe the pattern is wrong, not the case.
-          </div>
+          <blockquote class="about-quote reveal" data-delay="2">
+            <p class="lens-clinician">I have always been drawn to problems that refuse a quick answer, especially when solving them can lead to something useful.</p>
+            <p class="lens-engineer">When a model fails, I want to know which assumption broke first.</p>
+          </blockquote>
         </div>
+
+        <aside class="about-card reveal" data-delay="2" aria-label="At a glance">
+          <div class="card-bar">
+            <span class="lens-clinician">Chart · N. Naderi</span>
+            <span class="lens-engineer">~/nariman.json</span>
+          </div>
+          <svg class="card-signal" viewBox="0 0 320 64" aria-hidden="true" preserveAspectRatio="none">
+            <path pathLength="1" d="M0,36 h36 l6,-5 l6,5 h10 l4,6 l6,-28 l6,34 l6,-12 h14 l8,-7 l10,7 h22 l6,-5 l6,5 h10 l4,6 l6,-28 l6,34 l6,-12 h14 l8,-7 l10,7 h30"/>
+            <text x="262" y="42">&lt;/&gt;</text>
+          </svg>
+          <dl class="card-facts lens-clinician">
+            <div><dt>Trained</dt><dd>MD, Shahid Beheshti University of Medical Sciences</dd></div>
+            <div><dt>Works at</dt><dd>Gastroenterology and Liver Research Center, Taleghani Hospital</dd></div>
+            <div><dt>Studies</dt><dd>Language models, clinical guidelines, medical imaging</dd></div>
+            <div><dt>Codes in</dt><dd>Python. I learned to code before medical school.</dd></div>
+            <div><dt>Experimenting with</dt><dd>Computer vision, LLMs, AI agents, explainable AI</dd></div>
+          </dl>
+          <pre class="card-json lens-engineer"><code><span class="j-p">{</span>
+  <span class="j-k">"role"</span><span class="j-p">:</span> <span class="j-s">"physician programmer"</span><span class="j-p">,</span>
+  <span class="j-k">"trained"</span><span class="j-p">:</span> <span class="j-s">"MD, Shahid Beheshti"</span><span class="j-p">,</span>
+  <span class="j-k">"lab"</span><span class="j-p">:</span> <span class="j-s">"GI &amp; Liver Research Center"</span><span class="j-p">,</span>
+  <span class="j-k">"stack"</span><span class="j-p">:</span> <span class="j-s">"python"</span><span class="j-p">,</span>
+  <span class="j-k">"exploring"</span><span class="j-p">:</span> <span class="j-p">[</span><span class="j-s">"computer-vision"</span><span class="j-p">,</span> <span class="j-s">"llms"</span><span class="j-p">,</span> <span class="j-s">"ai-agents"</span><span class="j-p">,</span> <span class="j-s">"xai"</span><span class="j-p">],</span>
+  <span class="j-k">"debugs"</span><span class="j-p">:</span> <span class="j-s">"which assumption broke first"</span>
+<span class="j-p">}</span></code></pre>
+        </aside>
+      </div>
+
+    </section>
+
+    <section class="story" id="story" aria-labelledby="story-title" data-story>
+      <div class="story-pin">
+        <div class="story-head">
+          <p class="story-kicker">How I got here</p>
+          <h2 id="story-title" class="lens-clinician">From code, to medicine, to both</h2>
+          <h2 class="lens-engineer">git log --reverse</h2>
+          <p class="story-count" aria-hidden="true"><span data-story-index>01</span> / <span data-story-total>05</span></p>
+        </div>
+        <ol class="story-chapters">
+          <li class="story-chapter reveal" data-ghost="&lt;/&gt;">
+            <div class="story-text">
+              <p class="story-when">Before medicine</p>
+              <div class="story-body">
+                <h3>I learned to code first.</h3>
+                <p class="lens-clinician">Programming came before medical school. It taught me to break a hard problem into steps small enough to check.</p>
+                <p class="lens-engineer">Programming came first, before medical school. Small programs, one bug at a time.</p>
+              </div>
+            </div>
+            <figure class="story-scene scene-terminal" aria-hidden="true">
+              <div class="scene-bar"><span></span><span></span><span></span><em>first_program.py</em></div>
+              <div class="term-body">
+                <span class="tl tl-cmd" style="--s:0;--n:26">$ python first_program.py</span>
+                <span class="tl tl-com" style="--s:.12;--n:31"># break it into checkable steps</span>
+                <span class="tl" style="--s:.26;--n:28">for step in problem.split():</span>
+                <span class="tl" style="--s:.4;--n:15">    check(step)</span>
+                <span class="tl tl-err" style="--s:.52;--n:27">AssertionError: step 3 of 7</span>
+                <span class="tl tl-ok" style="--s:.64;--n:22">✓ fixed. 1 bug at a time</span>
+                <span class="term-caret"></span>
+              </div>
+            </figure>
+          </li>
+          <li class="story-chapter reveal" data-ghost="MD">
+            <div class="story-text">
+              <p class="story-when">Shahid Beheshti</p>
+              <div class="story-body">
+                <h3>Then medicine took over.</h3>
+                <p class="lens-clinician">At Shahid Beheshti University of Medical Sciences, clinical training gave me the questions I still work on.</p>
+                <p class="lens-engineer">Medical school at Shahid Beheshti. The code went quiet, but the habit of asking how a system fails stayed.</p>
+              </div>
+            </div>
+            <figure class="story-scene scene-monitor" aria-hidden="true">
+              <div class="mon-head">
+                <span>Lead II</span>
+                <span class="mon-hr"><i class="mon-heart"></i>HR <b data-hr>72</b></span>
+                <span>SpO₂ <b>98</b></span>
+              </div>
+              <svg class="ecg" viewBox="0 0 600 200" preserveAspectRatio="none">
+                <g class="ecg-run">
+                  <path d="M0,100 h30 l8,-8 l8,8 h14 l6,12 l8,-82 l8,100 l8,-30 h20 l12,-16 l14,16 h14 h30 l8,-8 l8,8 h14 l6,12 l8,-82 l8,100 l8,-30 h20 l12,-16 l14,16 h14 h30 l8,-8 l8,8 h14 l6,12 l8,-82 l8,100 l8,-30 h20 l12,-16 l14,16 h14 h30 l8,-8 l8,8 h14 l6,12 l8,-82 l8,100 l8,-30 h20 l12,-16 l14,16 h14 h30 l8,-8 l8,8 h14 l6,12 l8,-82 l8,100 l8,-30 h20 l12,-16 l14,16 h14 h30 l8,-8 l8,8 h14 l6,12 l8,-82 l8,100 l8,-30 h20 l12,-16 l14,16 h14 h30 l8,-8 l8,8 h14 l6,12 l8,-82 l8,100 l8,-30 h20 l12,-16 l14,16 h14 h30 l8,-8 l8,8 h14 l6,12 l8,-82 l8,100 l8,-30 h20 l12,-16 l14,16 h14"/>
+                </g>
+              </svg>
+              <div class="mon-foot"><span>Clinical training</span><span>Shahid Beheshti</span></div>
+            </figure>
+          </li>
+          <li class="story-chapter reveal" data-ghost="2022">
+            <div class="story-text">
+              <p class="story-when">2022</p>
+              <div class="story-body">
+                <h3>The two came back together.</h3>
+                <p class="lens-clinician">Midway through my MD, I started writing the code for my own research. That year, our COVID-19 cohort study from Tehran was published.</p>
+                <p class="lens-engineer">Picked Python back up seriously. I have written the code for my own AI-in-medicine research ever since.</p>
+              </div>
+            </div>
+            <figure class="story-scene scene-merge" aria-hidden="true">
+              <div class="merge-labels"><span>Signal</span><span class="merge-arrow">→</span><span>Script</span></div>
+              <svg viewBox="0 40 600 150">
+                <path id="merge-path" class="merge-rhythm" d="M0,174 H8 Q68,146 128,174 H158 Q218,146 278,174 H308 Q368,146 428,174 H458 Q518,146 578,174 H600"/>
+                <path class="merge-ecg" pathLength="1" d="M0,130 h30 l8,-6 l8,6 h14 l6,8 l8,-54 l8,66 l8,-20 h20 l12,-12 l14,12 h14 h30 l8,-6 l8,6 h14 l6,8 l8,-54 l8,66 l8,-20 h20 l12,-12 l14,12 h14 h30 l8,-6 l8,6 h14 l6,8 l8,-54 l8,66 l8,-20 h20 l12,-12 l14,12 h14 h30 l8,-6 l8,6 h14 l6,8 l8,-54 l8,66 l8,-20 h20 l12,-12 l14,12 h14"/>
+                <text class="merge-code" dy="-6"><textPath href="#merge-path" startOffset="4%" data-scrub-offset>import pandas as pd · cohort = load("tehran") · fit(model, cohort) · check(every_step) · plot(outcomes)</textPath></text>
+              </svg>
+              <p class="merge-foot">Same habit, new tools: find where the system fails.</p>
+            </figure>
+          </li>
+          <li class="story-chapter reveal" data-ghost="2025">
+            <div class="story-text">
+              <p class="story-when">2025</p>
+              <div class="story-body">
+                <h3>MD, then gastroenterology AI.</h3>
+                <p class="lens-clinician">I finished my MD. Today I research at the Gastroenterology and Liver Research Center, asking whether AI can be trusted with GI patients.</p>
+                <p class="lens-engineer">MD done. Now at the Gastroenterology and Liver Research Center: LLM confidence, RAG over guidelines, vision-language models on colonoscopy.</p>
+              </div>
+            </div>
+            <figure class="story-scene scene-chart" aria-hidden="true">
+              <div class="scene-bar"><span></span><span></span><span></span><em>Stated confidence vs. accuracy</em></div>
+              <svg viewBox="0 0 360 280">
+                <g class="chart-grid">
+                  <line x1="40" y1="240" x2="340" y2="240"/>
+                  <line x1="40" y1="20" x2="40" y2="240"/>
+                  <line x1="40" y1="130" x2="340" y2="130"/>
+                  <line x1="40" y1="75" x2="340" y2="75"/>
+                  <line x1="40" y1="185" x2="340" y2="185"/>
+                </g>
+                <g class="chart-gaps">
+                  <rect x="50" y="119" width="40" height="6.6" style="--i:0"/>
+                  <rect x="110" y="97" width="40" height="19.8" style="--i:1"/>
+                  <rect x="170" y="75" width="40" height="33" style="--i:2"/>
+                  <rect x="230" y="53" width="40" height="48.4" style="--i:3"/>
+                  <rect x="290" y="31" width="40" height="63.8" style="--i:4"/>
+                </g>
+                <g class="chart-bars">
+                  <rect x="50" y="125.6" width="40" height="114.4" style="--i:0"/>
+                  <rect x="110" y="116.8" width="40" height="123.2" style="--i:1"/>
+                  <rect x="170" y="108" width="40" height="132" style="--i:2"/>
+                  <rect x="230" y="101.4" width="40" height="138.6" style="--i:3"/>
+                  <rect x="290" y="94.8" width="40" height="145.2" style="--i:4"/>
+                </g>
+                <path class="chart-ideal" pathLength="1" d="M40,130 L340,20"/>
+                <text class="chart-axis" x="340" y="262" text-anchor="end">stated confidence →</text>
+                <text class="chart-axis chart-axis-y" transform="translate(18 130) rotate(-90)" text-anchor="middle">accuracy →</text>
+                <text class="chart-note" x="300" y="20" text-anchor="end">perfectly honest</text>
+              </svg>
+              <div class="chart-legend">
+                <span><i class="lg-bar"></i>Right</span>
+                <span><i class="lg-gap"></i>Overconfident</span>
+                <em>Illustrative</em>
+              </div>
+            </figure>
+          </li>
+          <li class="story-chapter story-chapter--now reveal" data-ghost="Now">
+            <div class="story-text">
+              <p class="story-when">Now</p>
+              <div class="story-body">
+                <h3>Two questions on my desk.</h3>
+                <p class="lens-clinician">Both start with the same worry: would this still work for my patients?</p>
+                <p class="lens-engineer">Both are evaluation problems before they are modeling problems.</p>
+              </div>
+            </div>
+            <aside class="now-card" aria-labelledby="now-title">
+              <p class="now-label" id="now-title"><span class="now-dot" aria-hidden="true"></span>Currently</p>
+              <ul class="now-list">
+                <li>
+                  <span class="now-tag">Language models</span>
+                  <p class="lens-clinician">Testing whether language models answer medical questions as well in Persian as they do in English.</p>
+                  <p class="lens-engineer">Building a bilingual Persian–English medical question-answering benchmark.</p>
+                </li>
+                <li>
+                  <span class="now-tag">Imaging</span>
+                  <p class="lens-clinician">Comparing how closely radiologists and a segmentation model agree on perianal fistula MRI.</p>
+                  <p class="lens-engineer">nnU-Net segmentation of perianal fistulas on MRI, measured against reader variability.</p>
+                </li>
+              </ul>
+              <p class="now-foot">Work in progress, not yet published.</p>
+            </aside>
+          </li>
+        </ol>
+        <nav class="story-nav" aria-label="Jump to a chapter">
+          <button type="button" data-story-go><span>01</span>Code</button>
+          <button type="button" data-story-go><span>02</span>Medicine</button>
+          <button type="button" data-story-go><span>03</span>Both</button>
+          <button type="button" data-story-go><span>04</span>GI AI</button>
+          <button type="button" data-story-go><span>05</span>Now</button>
+        </nav>
       </div>
     </section>
 
     <section class="section" id="publications">
       <div class="section-heading reveal">
         <p>Publications</p>
-        <h2>Papers</h2>
+        <h2>Selected papers</h2>
       </div>
       <div class="publication-list">
         <article class="pub-row reveal">
-          <time datetime="2025">2025</time>
-          <div class="pub-main">
-            <h3>The challenge of uncertainty quantification of large language models in medicine.</h3>
-            <p>arXiv</p>
-          </div>
-          <div class="pub-links">
-            <a href="https://arxiv.org/abs/2504.05278" target="_blank" rel="noreferrer">Preprint</a>
-          </div>
-        </article>
-        <article class="pub-row reveal" data-delay="1">
-          <time datetime="2022">2022</time>
-          <div class="pub-main">
-            <h3>Epidemiology of COVID-19 in Tehran, Iran: a cohort study of clinical profile, risk factors, and outcomes.</h3>
-            <p>BioMed Research International</p>
-          </div>
-          <div class="pub-links">
-            <a href="https://doi.org/10.1155/2022/2350063" target="_blank" rel="noreferrer">Paper</a>
-          </div>
-        </article>
-        <article class="pub-row reveal" data-delay="2">
-          <time datetime="2025">2025</time>
-          <div class="pub-main">
-            <h3>Vision language models versus machine learning models performance on polyp detection and classification in colonoscopy images.</h3>
-            <p>Scientific Reports</p>
-          </div>
-          <div class="pub-links">
-            <a href="https://doi.org/10.1038/s41598-025-29566-2" target="_blank" rel="noreferrer">Paper</a>
-          </div>
-        </article>
-        <article class="pub-row reveal" data-delay="3">
           <time datetime="2026">2026</time>
           <div class="pub-main">
             <h3>Across generations, sizes, and types, large language models poorly report self-confidence in gastroenterology clinical reasoning tasks.</h3>
-            <p>npj Gut and Liver · First author (equal contribution)</p>
+            <p class="pub-venue">npj Gut and Liver · First author (equal contribution)</p>
+            <p class="pub-lens"><span class="lens-clinician">Can a language model tell you when it is unsure about a GI case? Mostly, no.</span><span class="lens-engineer">Confidence reporting compared across LLM generations, sizes, and types.</span></p>
           </div>
           <div class="pub-links">
             <a href="https://doi.org/10.1038/s44355-026-00053-3" target="_blank" rel="noreferrer">Paper</a>
             <a href="https://github.com/narimannr2x/confidence_scoring" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </article>
+        <article class="pub-row reveal" data-delay="1">
+          <time datetime="2025">2025</time>
+          <div class="pub-main">
+            <h3>Vision language models versus machine learning models performance on polyp detection and classification in colonoscopy images.</h3>
+            <p class="pub-venue">Scientific Reports</p>
+            <p class="pub-lens"><span class="lens-clinician">Can a general-purpose AI model find and classify colon polyps?</span><span class="lens-engineer">Zero-shot vision-language models benchmarked against trained ML models on colonoscopy images.</span></p>
+          </div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1038/s41598-025-29566-2" target="_blank" rel="noreferrer">Paper</a>
+          </div>
+        </article>
+        <article class="pub-row reveal" data-delay="2">
+          <time datetime="2026">2026</time>
+          <div class="pub-main">
+            <h3>State of abdominal CT datasets: A critical review of bias, clinical relevance, and real-world applicability.</h3>
+            <p class="pub-venue">PLOS Digital Health</p>
+            <p class="pub-lens"><span class="lens-clinician">Do public abdominal CT datasets look like the patients we treat?</span><span class="lens-engineer">Critical review of dataset bias, clinical relevance, and real-world applicability.</span></p>
+          </div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1371/journal.pdig.0001567" target="_blank" rel="noreferrer">Paper</a>
+          </div>
+        </article>
+        <article class="pub-row reveal" data-delay="3">
+          <time datetime="2026">2026</time>
+          <div class="pub-main">
+            <h3>Using large language models to integrate international IBD guidelines: A retrieval-augmented generation approach.</h3>
+            <p class="pub-venue">Colorectal Disease</p>
+            <p class="pub-lens"><span class="lens-clinician">Can AI merge international IBD guidelines into one consistent answer?</span><span class="lens-engineer">Retrieval-augmented generation over international guidelines.</span></p>
+          </div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1111/codi.70436" target="_blank" rel="noreferrer">Paper</a>
+          </div>
+        </article>
         <article class="pub-row reveal" data-delay="4">
           <time datetime="2025">2025</time>
           <div class="pub-main">
             <h3>Evaluating Prompt Engineering Techniques for Accuracy and Confidence Elicitation in Medical LLMs.</h3>
-            <p>EXTRAAMAS · Lecture Notes in Computer Science · First author</p>
+            <p class="pub-venue">EXTRAAMAS · Lecture Notes in Computer Science · First author</p>
+            <p class="pub-lens"><span class="lens-clinician">Does the way you ask a language model change how right, and how sure, it is?</span><span class="lens-engineer">Prompting techniques compared for accuracy and confidence elicitation.</span></p>
           </div>
           <div class="pub-links">
             <a href="https://doi.org/10.1007/978-3-032-01399-6_5" target="_blank" rel="noreferrer">Paper</a>
@@ -229,20 +420,22 @@
           </div>
         </article>
         <article class="pub-row reveal">
-          <time datetime="2026">2026</time>
+          <time datetime="2025">2025</time>
           <div class="pub-main">
-            <h3>State of abdominal CT datasets: A critical review of bias, clinical relevance, and real-world applicability.</h3>
-            <p>PLOS Digital Health</p>
+            <h3>The challenge of uncertainty quantification of large language models in medicine.</h3>
+            <p class="pub-venue">arXiv</p>
+            <p class="pub-lens"><span class="lens-clinician">When should a clinician trust a language model's answer?</span><span class="lens-engineer">Perspective on uncertainty quantification methods for medical LLMs.</span></p>
           </div>
           <div class="pub-links">
-            <a href="https://doi.org/10.1371/journal.pdig.0001567" target="_blank" rel="noreferrer">Paper</a>
+            <a href="https://arxiv.org/abs/2504.05278" target="_blank" rel="noreferrer">Preprint</a>
           </div>
         </article>
         <article class="pub-row reveal">
           <time datetime="2025">2025</time>
           <div class="pub-main">
             <h3>Alzheimer's Disease Stage Classification via Multimodal CNN on EEG Spectrograms and Cube-Drawing Images.</h3>
-            <p>medRxiv</p>
+            <p class="pub-venue">medRxiv</p>
+            <p class="pub-lens"><span class="lens-clinician">Can an EEG and a cube-drawing test stage Alzheimer's disease?</span><span class="lens-engineer">Multimodal CNN on EEG spectrograms and drawing images.</span></p>
           </div>
           <div class="pub-links">
             <a href="https://www.medrxiv.org/content/10.1101/2025.10.01.25336871v1" target="_blank" rel="noreferrer">Preprint</a>
@@ -251,18 +444,9 @@
         <article class="pub-row reveal">
           <time datetime="2026">2026</time>
           <div class="pub-main">
-            <h3>Using large language models to integrate international IBD guidelines: A retrieval-augmented generation approach.</h3>
-            <p>Colorectal Disease</p>
-          </div>
-          <div class="pub-links">
-            <a href="https://doi.org/10.1111/codi.70436" target="_blank" rel="noreferrer">Paper</a>
-          </div>
-        </article>
-        <article class="pub-row reveal">
-          <time datetime="2026">2026</time>
-          <div class="pub-main">
             <h3>Independent and Combined Association of Overweight and Obesity and Metabolic Dysfunction–Associated Steatotic Liver Disease (MASLD) with 10-Year Atherosclerotic Cardiovascular Disease Risk in Patients with Type 2 Diabetes.</h3>
-            <p>Iranian Journal of Nutrition Sciences and Food Technology · First author</p>
+            <p class="pub-venue">Iranian Journal of Nutrition Sciences and Food Technology · First author</p>
+            <p class="pub-lens"><span class="lens-clinician">How do excess weight and fatty liver add up to heart risk in type 2 diabetes?</span><span class="lens-engineer">Independent and joint association analysis against 10-year ASCVD risk.</span></p>
           </div>
           <div class="pub-links">
             <a href="http://nsft.sbmu.ac.ir/article-1-4010-en.html" target="_blank" rel="noreferrer">Paper</a>
@@ -272,7 +456,8 @@
           <time datetime="2025">2025</time>
           <div class="pub-main">
             <h3>Association of Lifelines Diet Score (LLDS) with Risk of Pancreatic Steatosis: A Case-Control Study.</h3>
-            <p>Iranian Journal of Endocrinology and Metabolism · First author</p>
+            <p class="pub-venue">Iranian Journal of Endocrinology and Metabolism · First author</p>
+            <p class="pub-lens"><span class="lens-clinician">Is diet quality linked to fat in the pancreas?</span><span class="lens-engineer">Case-control study of a diet score against pancreatic steatosis.</span></p>
           </div>
           <div class="pub-links">
             <a href="http://ijem.sbmu.ac.ir/article-1-3260-en.html" target="_blank" rel="noreferrer">Paper</a>
@@ -282,10 +467,22 @@
           <time datetime="2024">2024</time>
           <div class="pub-main">
             <h3>Assessing the effect of remdesivir alone and in combination with corticosteroids on time to death in COVID-19: A propensity score-matched analysis.</h3>
-            <p>Journal of Clinical Virology Plus</p>
+            <p class="pub-venue">Journal of Clinical Virology Plus</p>
+            <p class="pub-lens"><span class="lens-clinician">Did remdesivir, alone or with steroids, change time to death in COVID-19?</span><span class="lens-engineer">Propensity score–matched time-to-event analysis.</span></p>
           </div>
           <div class="pub-links">
             <a href="https://doi.org/10.1016/j.jcvp.2024.100180" target="_blank" rel="noreferrer">Paper</a>
+          </div>
+        </article>
+        <article class="pub-row reveal">
+          <time datetime="2022">2022</time>
+          <div class="pub-main">
+            <h3>Epidemiology of COVID-19 in Tehran, Iran: a cohort study of clinical profile, risk factors, and outcomes.</h3>
+            <p class="pub-venue">BioMed Research International</p>
+            <p class="pub-lens"><span class="lens-clinician">Who became sickest with COVID-19 in Tehran, and what predicted it?</span><span class="lens-engineer">Cohort study modelling risk factors and outcomes.</span></p>
+          </div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1155/2022/2350063" target="_blank" rel="noreferrer">Paper</a>
           </div>
         </article>
       </div>
@@ -302,11 +499,12 @@
     <section class="section contact-section" id="contact">
       <div class="contact-panel reveal">
         <p>Contact</p>
-        <h2>Interested in working together?</h2>
-        <span>I welcome collaborations on medical LLM evaluation, clinical guideline synthesis, and medical imaging. If you have a specific research question, dataset, or study idea, email me.</span>
+        <h2 class="lens-clinician">Have a clinical question AI could help answer?</h2>
+        <h2 class="lens-engineer">Have a model that needs a clinician's eye?</h2>
+        <span class="lens-clinician">I welcome collaborations on medical LLM evaluation, clinical guideline synthesis, and medical imaging. If you have a research question or study idea, email me.</span>
+        <span class="lens-engineer">If you are building or evaluating a model on medical data and want someone who can read both the code and the chart, email me.</span>
         <div class="hero-actions">
           <a class="button primary" href="mailto:narimannaderi.md@gmail.com">Email me <span class="arrow">→</span></a>
-          <a class="button secondary" href="https://scholar.google.com/citations?user=RkGkOdwAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
         </div>
         <div class="contact-links" aria-label="Additional contact links">
           <a href="https://github.com/narimannr2x" target="_blank" rel="noreferrer">GitHub</a>
