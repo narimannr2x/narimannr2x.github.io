@@ -1,8 +1,8 @@
 # Nariman Naderi Personal Website
 
-This folder is now a static GitHub Pages site. It does not require Jekyll, Ruby, npm, or a build step.
+This is a static GitHub Pages site. Pages serves the committed HTML and generated assets directly. Node.js is used locally to build the CSS and JavaScript; no server runtime is needed.
 
-> **Source of truth for editing:** `index.html`, `assets/css/site.css`, `assets/js/main.js`, and image assets in the root folder.
+> **Source of truth for editing:** HTML pages, `.local-src/site.css`, `.local-src/main.js`, and image assets. The readable `.local-src/` folder is Git-ignored. `assets/css/site.css` and `assets/js/main.js` are generated minified files.
 
 `v1.1/` is a staging copy of a redesigned homepage (thesis hero, trajectory viewer, tabbed Evidence section). It is `noindex` and is not the live GitHub Pages site. See `v1.1/README.md`.
 
@@ -12,8 +12,8 @@ Edit these files:
 
 - `index.html`
 - `blog.html`
-- `assets/css/site.css`
-- `assets/js/main.js`
+- `.local-src/site.css`
+- `.local-src/main.js`
 - image assets in this root folder
 
 The `.nojekyll` file tells GitHub Pages to serve the files directly instead of processing the repository with Jekyll.
@@ -46,6 +46,32 @@ Writing lives on `blog.html`. Article files and URLs in `posts/` are unchanged.
 - Fraunces, IBM Plex Sans, and IBM Plex Mono are self-hosted WOFF2 fonts in `assets/fonts/`, with their OFL licenses. The homepage preloads the main display and body subsets.
 - `assets/images/social-card-1200x630.png` is the Open Graph / Twitter social card.
 
+## Local build
+
+The readable CSS and JavaScript stay in `.local-src/` on this computer, including their comments. Only the generated assets are committed and pushed. Keep a backup of `.local-src/` because Git does not track it.
+
+Install the pinned build dependencies once with `npm install`. After editing the local sources, run:
+
+```powershell
+npm run build
+```
+
+This trims CSS selectors whose required classes appear in neither the HTML nor the runtime state list, minifies the CSS and JavaScript, embeds the homepage's first-screen styles, and updates content-based cache versions. The full stylesheet loads without blocking the homepage's first paint. Blog and article pages retain a regular stylesheet link. A `noscript` stylesheet preserves the complete page when JavaScript is disabled.
+
+If JavaScript starts adding a new class, add it to the runtime class list in `scripts/build.mjs`. Run the build after HTML changes too, so new selectors are retained and first-screen styles stay current. Do not edit generated assets or the marked inline critical CSS by hand.
+
+On a fresh clone, run `npm install` then `npm run restore-source`. This creates formatted local CSS and JavaScript from the deployed files without overwriting existing sources. Original comments and selectors removed by trimming remain only in the local source backup or earlier Git history.
+
+To refresh the smaller fonts after text changes:
+
+```powershell
+python -m pip install fonttools brotli
+npm run fonts
+npm run build
+```
+
+The font script preserves printable ASCII, the site's other characters, CSS-generated labels, and OpenType layout features. Latin extended fonts remain available for other characters. Original fonts stay in `.local-src/fonts/`; on a fresh clone the script downloads the original versions recorded in `scripts/font-sources.json`.
+
 ## Local Preview
 
 Open `index.html` directly in a browser, or serve the folder with any simple static server.
@@ -64,7 +90,7 @@ http://localhost:8000
 
 ## Deployment
 
-Push this folder's contents to the GitHub Pages repository root. GitHub Pages should serve `index.html` directly.
+Run `npm run build`, then commit and push the generated assets and updated HTML. The GitHub Pages workflow deploys those committed files directly. Git-ignored `.local-src/` and `node_modules/` are not pushed.
 
 ## Content Source
 

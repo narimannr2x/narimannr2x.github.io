@@ -6,3 +6,7 @@
 SITE-MAP.md
 plan.md
 website_pic.JPG
+
+# Readable local sources and build dependencies
+.local-src/
+node_modules/
