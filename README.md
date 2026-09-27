@@ -42,7 +42,8 @@ Writing lives on `blog.html`. Article files and URLs in `posts/` are unchanged.
 
 ## Portrait and social card
 
-- `website_pic-1100.webp` is the displayed primary portrait format (WebP); `website_pic-min.JPG` is the fallback.
+- The portrait uses responsive transparent WebP images at 400, 720, and 1100 pixels; `website_pic-1100.png` is the fallback. The hero portrait appears immediately; other reveal animations remain.
+- Fraunces, IBM Plex Sans, and IBM Plex Mono are self-hosted WOFF2 fonts in `assets/fonts/`, with their OFL licenses. The homepage preloads the main display and body subsets.
 - `assets/images/social-card-1200x630.png` is the Open Graph / Twitter social card.
 
 ## Local Preview

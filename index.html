@@ -41,10 +41,9 @@
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="apple-touch-icon" href="assets/images/favicon.png">
   <script>document.documentElement.classList.add('js');try{if(localStorage.getItem('lens')==='engineer')document.documentElement.dataset.lens='engineer';}catch(e){}</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,760;9..144,900&family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=20260927d">
+  <link rel="preload" href="assets/fonts/fraunces-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/ibm-plex-sans-100-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css?v=20260927-perf">
   <script src="assets/js/main.js?v=20260927d" defer></script>
   <script type="application/ld+json">
   {
@@ -139,9 +138,9 @@
           </div>
         </div>
 
-        <figure class="portrait hero-portrait portrait--cutout reveal" aria-label="Nariman Naderi portrait">
+        <figure class="portrait hero-portrait portrait--cutout" aria-label="Nariman Naderi portrait">
           <picture>
-            <source srcset="website_pic-1100.webp" type="image/webp">
+            <source srcset="website_pic-400.webp 400w, website_pic-720.webp 720w, website_pic-1100.webp 1100w" sizes="(max-width: 860px) min(360px, calc(100vw - 48px)), 420px" type="image/webp">
             <img src="website_pic-1100.png" alt="Nariman Naderi, physician programmer and medical AI researcher" width="1100" height="1375" decoding="async" fetchpriority="high">
           </picture>
         </figure>
