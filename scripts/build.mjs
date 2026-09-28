@@ -12,7 +12,7 @@ const jsSource = await readFile('.local-src/main.js', 'utf8');
 const classesIn = text => new Set([...text.matchAll(/class="([^"]*)"/g)].flatMap(m => m[1].split(/\s+/)));
 const usedClasses = classesIn(html.join('\n'));
 // Runtime classes are explicit so pruning cannot remove interaction states.
-for (const name of ['js', 'is-open', 'is-active', 'is-past', 'is-pinned', 'is-visible', 'styles-ready', 'is-offscreen', 'page-hidden']) usedClasses.add(name);
+for (const name of ['js', 'is-open', 'is-active', 'is-past', 'is-pinned', 'is-visible', 'is-lit', 'styles-ready', 'is-offscreen', 'page-hidden']) usedClasses.add(name);
 const firstScreen = classesIn(html[0].split('<section class="section about"')[0]);
 for (const name of ['js', 'is-open', 'is-active', 'styles-ready', 'page-hidden']) firstScreen.add(name);
 
